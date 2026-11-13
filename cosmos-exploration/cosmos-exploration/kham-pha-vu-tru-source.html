@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khám Phá Vũ Trụ – Cộng đồng yêu thiên văn</title>
+<meta name="description" content="Website cá nhân phi thương mại về thiên văn học: Hệ Mặt Trời, thiên thể, thư viện ảnh và hỏi đáp về vũ trụ.">
+<meta property="og:title" content="Khám Phá Vũ Trụ">
+<meta property="og:description" content="Hành trình khám phá Hệ Mặt Trời, hố đen, tinh vân và thiên hà.">
+<meta property="og:type" content="website">
+<!-- ===== CHỖ DÁN MÃ GOOGLE ANALYTICS (GA4) Ở ĐÂY SAU NÀY ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== Biến màu & nền ===== */
+:root{--ivory:#EAF0FF;--mute:#9AA6C4;--cy:#3DD6F5;--vi:#7C5CFF;--pk:#FF7AC6;--glass:rgba(255,255,255,.06);--line:rgba(255,255,255,.14)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:400 17px/1.7 'Be Vietnam Pro',sans-serif;color:var(--ivory);min-height:100vh;
+background:radial-gradient(900px 600px at 15% 10%,rgba(124,92,255,.25),transparent),radial-gradient(800px 600px at 90% 40%,rgba(61,214,245,.15),transparent),radial-gradient(800px 600px at 20% 85%,rgba(255,122,198,.14),transparent),linear-gradient(#04060F,#0A1022);background-attachment:fixed}
+h1,h2,h3{font-family:Montserrat,sans-serif;line-height:1.15}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--cy),var(--vi));z-index:60}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+@media(min-width:900px){.wrap{padding:0 48px}}
+section{padding:120px 0 0}
+/* ===== Navbar ===== */
+nav{position:sticky;top:0;z-index:50;background:rgba(4,6,15,.65);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font:800 18px Montserrat;letter-spacing:.5px;color:var(--ivory);text-decoration:none}
+nav ul{display:flex;gap:28px;list-style:none;padding:0}
+nav a.l{color:var(--mute);text-decoration:none;font-size:16px;padding:6px 0;background:linear-gradient(90deg,var(--cy),var(--vi)) 0 100%/0 2px no-repeat;transition:.3s}
+nav a.l:hover,nav a.l.on{color:#fff;background-size:100% 2px}
+#burger{display:none;background:none;border:1px solid var(--line);color:#fff;font-size:24px;border-radius:10px;width:48px;height:44px;cursor:pointer}
+@media(max-width:820px){#burger{display:block}nav ul{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;background:rgba(4,6,15,.96);padding:8px 24px}nav ul.open{display:flex}nav ul a{display:block;padding:14px 0}}
+/* ===== Hero ===== */
+#home{min-height:100vh;padding:0;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+#hbg{position:absolute;inset:-8% 0;background:linear-gradient(rgba(4,6,15,.55),rgba(4,6,15,.85)),url('https://commons.wikimedia.org/wiki/Special:FilePath/Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg?width=1600') center/cover,linear-gradient(135deg,#1a1440,#0a1022);will-change:transform}
+#home .in{position:relative;z-index:1;padding:24px}
+#home h1{font-size:clamp(44px,9vw,96px);font-weight:800;background:linear-gradient(100deg,#fff 20%,var(--cy) 40%,var(--pk) 55%,#fff 75%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite;filter:drop-shadow(0 0 24px rgba(61,214,245,.45))}
+@keyframes shine{to{background-position:-250% 0}}
+#home p{color:var(--mute);font-size:20px;margin:18px 0 34px}
+.btn{display:inline-block;border:0;cursor:pointer;font:600 17px 'Be Vietnam Pro';color:#04060F;text-decoration:none;padding:15px 32px;border-radius:999px;background:linear-gradient(90deg,var(--cy),var(--vi));transition:.3s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(124,92,255,.5);color:#fff}
+.arr{position:absolute;bottom:28px;left:50%;font-size:30px;color:var(--cy);animation:bl 1.6s infinite;text-decoration:none}
+@keyframes bl{50%{opacity:.2;transform:translateY(8px)}}
+/* ===== Tiêu đề phần & lưới ===== */
+.sh{margin-bottom:48px;max-width:720px}
+.sh h2{font-size:clamp(32px,5vw,52px);margin-bottom:14px}
+.sh p{color:var(--mute)}
+.grid{display:grid;gap:24px;grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.card{background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.35);transition:.35s;display:flex;flex-direction:column;--ac:var(--cy)}
+.card:hover{transform:translateY(-6px);border-color:var(--ac);box-shadow:0 0 28px color-mix(in srgb,var(--ac) 45%,transparent)}
+.ph{aspect-ratio:4/3;overflow:hidden;background:linear-gradient(135deg,#1a1440,#0a1022)}
+.ph img,.fb{width:100%;height:100%;object-fit:cover;transition:.5s}
+.card:hover .ph img{transform:scale(1.07)}
+.fb{display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font:700 18px Montserrat;background:linear-gradient(135deg,var(--vi),var(--cy))}
+.cb{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.cb h3{font-size:22px}
+.cb p{color:var(--mute);font-size:17px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:13px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ivory);background:rgba(255,255,255,.05)}
+.more{margin-top:auto;align-self:flex-start;min-height:44px;cursor:pointer;background:none;color:var(--ac);border:1px solid var(--ac);border-radius:999px;padding:8px 20px;font:600 16px 'Be Vietnam Pro';transition:.3s}
+.more:hover{background:var(--ac);color:#04060F}
+a:focus-visible,button:focus-visible{outline:3px solid var(--pk);outline-offset:3px}
+/* ===== Tab thư viện ===== */
+.tabs{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.tab{min-height:48px;padding:10px 24px;border-radius:16px;border:1px solid var(--line);background:var(--glass);color:var(--ivory);font:600 17px 'Be Vietnam Pro';cursor:pointer;transition:.3s}
+.tab.on,.tab:hover{background:linear-gradient(90deg,var(--cy),var(--vi));color:#04060F;border-color:transparent}
+#gal{animation:fi .4s}
+@keyframes fi{from{opacity:0;transform:translateY(10px)}}
+.gi{cursor:pointer;border:0;padding:0;text-align:left;color:inherit;font:inherit}
+/* ===== Hỏi đáp ===== */
+.faq{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.faq .cb h3{font-size:21px}
+/* ===== Sự thật hôm nay ===== */
+.fact{margin-top:120px;text-align:center;padding:40px 24px;border-radius:20px;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(12px)}
+.fact p{font-size:20px;max-width:760px;margin:12px auto 22px}
+/* ===== Modal & lightbox ===== */
+.ov{position:fixed;inset:0;z-index:100;background:rgba(2,4,12,.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:.35s}
+.ov.show{opacity:1;visibility:visible}
+.box{background:#0d1428;border:1px solid var(--line);border-radius:20px;max-width:880px;width:100%;max-height:92vh;overflow:auto;position:relative;transform:scale(.92);transition:.35s}
+.ov.show .box{transform:scale(1)}
+.box img,.box .fb{width:100%;max-height:42vh;object-fit:cover;display:block}
+.mb{padding:24px 28px 28px}
+.mb h3{font-size:34px;margin-bottom:10px}
+.mb small{display:block;color:var(--mute);font-size:14px;margin-top:14px}
+table{width:100%;border-collapse:collapse;margin-top:16px;font-size:16px}
+td{padding:8px 0;border-bottom:1px solid var(--line)}td:first-child{color:var(--mute);width:45%}
+.x,.nv{position:absolute;z-index:2;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:rgba(4,6,15,.8);color:#fff;font-size:22px;cursor:pointer}
+.x{top:12px;right:12px}.nv{top:35%}#pv{left:12px}#nx{right:12px}
+/* ===== Footer ===== */
+footer{margin-top:120px;border-top:1px solid var(--line);background:rgba(4,6,15,.75);padding:56px 0 40px;position:relative;z-index:1;font-size:16px}
+.fg{display:grid;gap:32px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+footer h4{font:700 18px Montserrat;margin-bottom:10px}
+footer p,footer li{color:var(--mute)}footer ul{padding-left:18px}footer a{color:var(--cy)}
+/* ===== Hiệu ứng cuộn ===== */
+.rv{opacity:0;transform:translateY(28px);transition:.6s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas><div id="prog"></div>
+
+<nav><div class="wrap">
+<a class="logo" href="#home">✦ KHÁM PHÁ VŨ TRỤ</a>
+<button id="burger" aria-label="Mở menu">☰</button>
+<ul id="menu">
+<li><a class="l" href="#home">Trang chủ</a></li><li><a class="l" href="#solar">Hệ Mặt Trời</a></li>
+<li><a class="l" href="#objects">Thiên thể</a></li><li><a class="l" href="#gallery">Thư viện ảnh</a></li>
+<li><a class="l" href="#faq">Hỏi – Đáp</a></li>
+</ul></div></nav>
+
+<header id="home"><div id="hbg"></div>
+<div class="in"><h1>KHÁM PHÁ VŨ TRỤ</h1><p>Từ Mặt Trời quen thuộc đến những hố đen xa xôi.</p><a class="btn" href="#solar">Bắt đầu hành trình</a></div>
+<a class="arr" href="#solar" aria-label="Cuộn xuống">⌄</a></header>
+
+<main class="wrap">
+<section id="solar"><div class="sh rv"><h2>Hệ Mặt Trời</h2><p>Một ngôi sao và tám hành tinh cùng nhau quay trong một vũ điệu kéo dài 4,6 tỷ năm. Chọn một thiên thể để xem chi tiết.</p></div><div class="grid" id="gs"></div></section>
+<section id="objects"><div class="sh rv"><h2>Thiên thể</h2><p>Những vật thể kỳ vĩ nằm ngoài Hệ Mặt Trời, mỗi loại kể một câu chuyện khác nhau về vũ trụ.</p></div><div class="grid" id="go"></div></section>
+<section id="gallery"><div class="sh rv"><h2>Thư viện ảnh</h2><p>Những bức ảnh thật từ kính thiên văn và tàu vũ trụ. Chọn danh mục rồi bấm vào ảnh để xem lớn.</p></div><div class="tabs" id="tabs"></div><div class="grid" id="gal"></div></section>
+<section id="faq"><div class="sh rv"><h2>Hỏi – Đáp</h2><p>Năm câu hỏi mà người mới học thiên văn hay thắc mắc nhất.</p></div><div class="faq" id="gf"></div>
+<div class="fact rv"><h3>Sự thật thú vị hôm nay</h3><p id="ft"></p><button class="btn" id="fb">Sự thật khác</button></div></section>
+</main>
+
+<footer><div class="wrap"><div class="fg">
+<div><h4>Về dự án</h4><p>Website cá nhân phi thương mại, phục vụ học tập và lan tỏa tình yêu thiên văn, hướng tới một cộng đồng trực tuyến yêu vũ trụ.</p><p>Tác giả: [TÊN CỦA TÔI] – [LỚP] – [TRƯỜNG], 2026.</p></div>
+<div><h4>Nguồn tham khảo</h4><ul>
+<li><a href="https://science.nasa.gov" target="_blank" rel="noopener">NASA Science</a></li><li><a href="https://www.esa.int" target="_blank" rel="noopener">ESA</a></li>
+<li><a href="https://www.eso.org" target="_blank" rel="noopener">ESO</a></li><li><a href="https://hubblesite.org" target="_blank" rel="noopener">Hubble</a></li>
+<li><a href="https://webbtelescope.org" target="_blank" rel="noopener">JWST</a></li><li><a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a></li></ul></div>
+<div><h4>Bản quyền & liên hệ</h4><p>Hình ảnh thuộc về chủ sở hữu tương ứng, được dùng cho mục đích giáo dục phi thương mại.</p><p>Email: [email của tôi]<br>Facebook: [liên kết]</p><p><a href="#home">↑ Lên đầu trang</a></p></div>
+</div></div></footer>
+
+<!-- Modal -->
+<div class="ov" id="md" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="box"><button class="x" aria-label="Đóng">✕</button><div id="mi"></div><div class="mb"><h3 id="mt"></h3><p id="mp"></p><table id="mr"></table><small id="ms"></small></div></div></div>
+<!-- Lightbox -->
+<div class="ov" id="lb" role="dialog" aria-modal="true" aria-labelledby="lt"><div class="box"><button class="x" aria-label="Đóng">✕</button><button class="nv" id="pv" aria-label="Ảnh trước">‹</button><button class="nv" id="nx" aria-label="Ảnh sau">›</button><div id="li"></div><div class="mb"><h3 id="lt"></h3><p id="lp"></p><small id="ls"></small></div></div></div>
+
+<script>
+/* ===================== DỮ LIỆU (sửa link ảnh tại đây) ===================== */
+const W=f=>'https://commons.wikimedia.org/wiki/Special:FilePath/'+f+'?width=800';
+// Ảnh: [tên file Wikimedia, tác giả/nguồn, giấy phép]
+// Hệ Mặt Trời: [tên, ảnh, mô tả ngắn, [chip], giới thiệu, [[thông số,giá trị]]]
+const SOLAR=[
+["Mặt Trời",["The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA's_Solar_Dynamics_Observatory_-_20100819.jpg","NASA/SDO","Phạm vi công cộng"],"Ngôi sao duy nhất của hệ, nguồn sống của mọi hành tinh.",["Cách Trái Đất 150 triệu km","Chu kỳ tự quay ~25 ngày","Không có vệ tinh"],"Mặt Trời là quả cầu plasma khổng lồ chứa gần 99,9% khối lượng cả Hệ Mặt Trời. Năng lượng của nó đến từ phản ứng tổng hợp hydro thành heli ở lõi. Thú vị: ánh sáng sinh ra ở lõi phải mất hàng chục nghìn năm mới thoát ra bề mặt, rồi chỉ cần khoảng 8 phút để tới Trái Đất.",[["Đường kính","1,39 triệu km"],["Nhiệt độ bề mặt","~5.500 °C"],["Tuổi","~4,6 tỷ năm"]]],
+["Sao Thủy",["Mercury_in_true_color.jpg","NASA/MESSENGER","Phạm vi công cộng"],"Hành tinh nhỏ nhất, nóng ban ngày và lạnh buốt ban đêm.",["58 triệu km","88 ngày","0 vệ tinh"],"Sao Thủy gần Mặt Trời nhất nên quay quanh nó chỉ trong 88 ngày. Bề mặt đầy hố va chạm như Mặt Trăng. Vì gần như không có khí quyển, nhiệt độ dao động từ khoảng 430 °C ban ngày xuống -180 °C ban đêm.",[["Đường kính","4.879 km"],["Một ngày","59 ngày Trái Đất"],["Vệ tinh","0"]]],
+["Sao Kim",["PIA23791-Venus-RealAndEnhancedContrast-20200608.jpg","NASA/JPL-Caltech","Phạm vi công cộng"],"Hành tinh nóng nhất nhờ hiệu ứng nhà kính mạnh.",["108 triệu km","225 ngày","0 vệ tinh"],"Sao Kim có kích thước gần bằng Trái Đất nhưng bị bao bọc bởi khí quyển CO₂ dày, khiến bề mặt nóng hơn 460 °C. Nó tự quay ngược chiều so với hầu hết hành tinh, và một ngày dài hơn một năm của chính nó.",[["Đường kính","12.104 km"],["Nhiệt độ","~465 °C"],["Vệ tinh","0"]]],
+["Trái Đất",["The_Blue_Marble_(remastered).jpg","NASA (Apollo 17)","Phạm vi công cộng"],"Ngôi nhà của chúng ta, hành tinh duy nhất biết có sự sống.",["150 triệu km","365,25 ngày","1 vệ tinh"],"Trái Đất có nước lỏng, khí quyển giàu nitơ, oxy và từ trường bảo vệ khỏi gió Mặt Trời. Khoảng 71% bề mặt là đại dương. Mặt Trăng giúp giữ trục nghiêng của Trái Đất ổn định, tạo nên các mùa đều đặn.",[["Đường kính","12.742 km"],["Tuổi","~4,54 tỷ năm"],["Vệ tinh","1"]]],
+["Sao Hỏa",["OSIRIS_Mars_true_color.jpg","ESA/MPS/OSIRIS Team","CC BY-SA 3.0 IGO"],"Hành tinh đỏ với núi lửa cao nhất Hệ Mặt Trời.",["228 triệu km","687 ngày","2 vệ tinh"],"Màu đỏ của Sao Hỏa đến từ oxit sắt trên bề mặt. Hành tinh này có Olympus Mons, ngọn núi lửa cao khoảng 22 km, và dấu vết của các dòng sông cổ. Nhiều tàu thăm dò đang tìm bằng chứng về sự sống trong quá khứ.",[["Đường kính","6.779 km"],["Nhiệt độ TB","-60 °C"],["Vệ tinh","Phobos, Deimos"]]],
+["Sao Mộc",["Jupiter_and_its_shrunken_Great_Red_Spot.jpg","NASA/ESA/Hubble","Phạm vi công cộng"],"Ông lớn khí với cơn bão kéo dài hàng trăm năm.",["778 triệu km","11,9 năm","95 vệ tinh"],"Sao Mộc nặng hơn tổng khối lượng mọi hành tinh khác cộng lại. Vết Đỏ Lớn là một cơn bão từng rộng hơn Trái Đất và đã hoạt động ít nhất vài trăm năm. Mặt Trăng Europa của nó có thể giấu đại dương dưới lớp băng.",[["Đường kính","139.820 km"],["Một ngày","~10 giờ"],["Vệ tinh","95 (đã xác nhận)"]]],
+["Sao Thổ",["Saturn_during_Equinox.jpg","NASA/JPL/Space Science Institute","Phạm vi công cộng"],"Hành tinh có hệ vành đai ấn tượng nhất.",["1,43 tỷ km","29,4 năm","146 vệ tinh"],"Vành đai Sao Thổ gồm vô số mảnh băng và đá, rộng hàng trăm nghìn km nhưng mỏng chỉ vài chục mét. Mật độ trung bình của hành tinh nhỏ hơn nước, nên về lý thuyết nó sẽ nổi nếu có một bể nước đủ lớn.",[["Đường kính","116.460 km"],["Một ngày","~10,7 giờ"],["Vệ tinh","146 (đã xác nhận)"]]],
+["Sao Thiên Vương",["Uranus2.jpg","NASA/Voyager 2","Phạm vi công cộng"],"Hành tinh băng khổng lồ quay nghiêng gần 98°.",["2,87 tỷ km","84 năm","28 vệ tinh"],"Sao Thiên Vương gần như \"lăn\" quanh Mặt Trời vì trục nghiêng cực lớn, khiến mỗi cực có khoảng 42 năm ngày liên tục rồi 42 năm đêm. Màu xanh lục nhạt đến từ khí metan trong khí quyển.",[["Đường kính","50.724 km"],["Nhiệt độ","~-224 °C"],["Vệ tinh","28"]]],
+["Sao Hải Vương",["Neptune_Full.jpg","NASA/Voyager 2","Phạm vi công cộng"],"Hành tinh xa nhất, nơi có gió mạnh nhất hệ.",["4,5 tỷ km","165 năm","16 vệ tinh"],"Sao Hải Vương được phát hiện nhờ tính toán toán học vào năm 1846 trước khi có người nhìn thấy nó. Gió ở đây có thể vượt 2.000 km/h. Nó mới hoàn thành một vòng quanh Mặt Trời kể từ lúc được phát hiện vào năm 2011.",[["Đường kính","49.244 km"],["Nhiệt độ","~-214 °C"],["Vệ tinh","16"]]]
+];
+// Thiên thể: [tên, ảnh, mô tả, [chip], giới thiệu, [[thông số]], màu nhấn]
+const OBJS=[
+["Thiên hà",["Andromeda_Galaxy_(with_h-alpha).jpg","Adam Evans","CC BY 2.0"],"Hòn đảo của hàng trăm tỷ ngôi sao.",["Thiên hà Tiên Nữ","2,5 triệu năm ánh sáng"],"Thiên hà là tập hợp khổng lồ gồm sao, khí, bụi và vật chất tối liên kết bằng lực hấp dẫn. Thiên hà Tiên Nữ là thiên hà xoắn ốc lớn gần nhất và đang lao về phía Ngân Hà của chúng ta.",[["Loại","Xoắn ốc"],["Số sao","~1.000 tỷ"]],"#3DD6F5"],
+["Hố đen",["Black_hole_-_Messier_87_crop_max_res.jpg","EHT Collaboration","CC BY 4.0"],"Vùng không gian mà ngay cả ánh sáng cũng không thoát được.",["Ảnh M87*","55 triệu năm ánh sáng"],"Hố đen hình thành khi vật chất bị nén lại cực mạnh. Bức ảnh năm 2019 của Kính thiên văn Chân trời Sự kiện cho thấy bóng đen của hố đen ở tâm thiên hà M87, được viền bởi khí nóng sáng rực.",[["Khối lượng M87*","~6,5 tỷ lần Mặt Trời"],["Công bố ảnh","2019"]],"#FF7AC6"],
+["Tinh vân",["Orion_Nebula_-_Hubble_2006_mosaic_18000.jpg","NASA/ESA/Hubble","Phạm vi công cộng"],"Đám mây khí và bụi, nơi sinh ra những ngôi sao mới.",["Tinh vân Orion","~1.350 năm ánh sáng"],"Tinh vân Orion nằm trong chòm sao Thợ Săn, nhìn được bằng mắt thường như một vệt mờ. Bên trong là hàng nghìn ngôi sao còn rất trẻ đang hình thành từ khí và bụi.",[["Loại","Tinh vân phát xạ"],["Tuổi sao","Vài triệu năm"]],"#7C5CFF"],
+["Sao neutron",["Crab_Nebula.jpg","NASA/ESA/Hubble","Phạm vi công cộng"],"Tàn tích siêu đặc của một ngôi sao khổng lồ.",["Tâm Tinh vân Con Cua","~6.500 năm ánh sáng"],"Một thìa vật chất sao neutron nặng cỡ hàng tỷ tấn. Ở tâm Tinh vân Con Cua có một sao neutron quay khoảng 30 vòng mỗi giây, phát xung như ngọn hải đăng vũ trụ.",[["Đường kính","~20 km"],["Vụ nổ","Năm 1054"]],"#3DD6F5"],
+["Cụm sao",["Pleiades_large.jpg","NASA/ESA/AURA/Caltech","Phạm vi công cộng"],"Nhóm sao cùng sinh ra, gắn bó bằng hấp dẫn.",["Cụm Thất Nữ (M45)","~444 năm ánh sáng"],"Cụm Thất Nữ là cụm sao mở trẻ, dễ thấy bằng mắt thường. Các sao xanh nóng trong cụm sáng gấp hàng trăm lần Mặt Trời và được bao quanh bởi bụi phản xạ ánh sáng xanh.",[["Loại","Cụm sao mở"],["Tuổi","~100 triệu năm"]],"#FF7AC6"],
+["Sao chổi",["Comet_Hale-Bopp_1995O1.jpg","E. Kolmhofer, H. Raab","CC BY-SA 3.0"],"Quả cầu băng bẩn kéo theo cái đuôi sáng.",["Hale–Bopp","Chu kỳ ~2.500 năm"],"Sao chổi là khối băng và bụi từ vùng rìa Hệ Mặt Trời. Khi tiến gần Mặt Trời, băng bay hơi tạo thành đầu sáng và đuôi dài luôn hướng ra xa Mặt Trời.",[["Nhân","Vài km"],["Đuôi","Hàng triệu km"]],"#7C5CFF"],
+["Siêu tân tinh",["Crab_Nebula.jpg","NASA/ESA/Hubble","Phạm vi công cộng"],"Vụ nổ cuối đời cực sáng của một ngôi sao lớn.",["SN 1054","Tàn tích: Con Cua"],"Siêu tân tinh có thể sáng hơn cả thiên hà chứa nó trong vài tuần. Các nguyên tố nặng như sắt trong cơ thể chúng ta được tạo ra và phát tán từ những vụ nổ như vậy.",[["Loại","Sụp đổ lõi"],["Quan sát","Năm 1054"]],"#3DD6F5"],
+["Thiên hà xoắn ốc M51",["Messier51_sRGB.jpg","NASA/ESA/Hubble","Phạm vi công cộng"],"Thiên hà Xoáy Ốc với cánh tay xoắn rõ nét.",["M51","~23 triệu năm ánh sáng"],"M51 đang tương tác với thiên hà vệ tinh nhỏ NGC 5195. Lực hấp dẫn của bạn đồng hành làm nổi bật các nhánh xoắn và kích thích sao mới hình thành.",[["Loại","Xoắn ốc"],["Chòm sao","Chó Săn"]],"#FF7AC6"]
+];
+// Thư viện ảnh: danh mục → [tên, ảnh, mô tả, ...]
+const GAL={
+"Tinh vân":[["Trụ Sáng Tạo Vật","Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg","Các cột khí và bụi trong Tinh vân Đại Bàng, nơi sao mới đang hình thành.","NASA/ESA/Hubble","Phạm vi công cộng"],["Tinh vân Con Cua","Crab_Nebula.jpg","Tàn tích siêu tân tinh năm 1054 trong chòm sao Kim Ngưu.","NASA/ESA/Hubble","Phạm vi công cộng"],["Tinh vân Orion","Orion_Nebula_-_Hubble_2006_mosaic_18000.jpg","Vườn ươm sao gần Trái Đất nhất, sáng rực trong chòm Thợ Săn.","NASA/ESA/Hubble","Phạm vi công cộng"]],
+"Hành tinh":[["Sao Mộc","Jupiter_and_its_shrunken_Great_Red_Spot.jpg","Sao Mộc và Vết Đỏ Lớn do Hubble chụp.","NASA/ESA/Hubble","Phạm vi công cộng"],["Sao Thổ","Saturn_during_Equinox.jpg","Sao Thổ với vành đai mỏng khi điểm phân, do tàu Cassini chụp.","NASA/JPL/SSI","Phạm vi công cộng"],["Sao Hỏa","OSIRIS_Mars_true_color.jpg","Sao Hỏa màu thật, do tàu Rosetta chụp khi bay ngang.","ESA/MPS/OSIRIS","CC BY-SA 3.0 IGO"]],
+"Thiên hà":[["Thiên hà Tiên Nữ","Andromeda_Galaxy_(with_h-alpha).jpg","Thiên hà xoắn ốc lớn gần nhất, có thể thấy bằng mắt thường ở nơi tối.","Adam Evans","CC BY 2.0"],["Thiên hà Xoáy Ốc M51","Messier51_sRGB.jpg","M51 với các cánh tay xoắn rõ nét, do Hubble ghi lại.","NASA/ESA/Hubble","Phạm vi công cộng"],["Thiên hà Chong Chóng M101","M101_hires_STScI-PRC2006-10a.jpg","Thiên hà xoắn ốc mặt trước rộng gần gấp đôi Ngân Hà.","NASA/ESA/Hubble","Phạm vi công cộng"]],
+"Hố đen & Sao":[["Bóng đen hố đen M87*","Black_hole_-_Messier_87_crop_max_res.jpg","Bức ảnh đầu tiên về bóng đen của một hố đen siêu khối lượng.","EHT Collaboration","CC BY 4.0"],["Cụm sao Thất Nữ","Pleiades_large.jpg","Cụm sao mở trẻ với bụi phản xạ ánh sáng xanh.","NASA/ESA/AURA/Caltech","Phạm vi công cộng"],["Mặt Trời","The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA's_Solar_Dynamics_Observatory_-_20100819.jpg","Mặt Trời nhìn ở bước sóng cực tím do đài SDO chụp.","NASA/SDO","Phạm vi công cộng"]]};
+// Hỏi – Đáp: [câu hỏi, trả lời ngắn, giải thích dài, ảnh]
+const FAQ=[
+["Vũ trụ lớn đến mức nào?","Phần vũ trụ quan sát được rộng khoảng 93 tỷ năm ánh sáng và chứa hàng trăm tỷ thiên hà. Con số thật có thể còn lớn hơn nhiều.","Ánh sáng đi mỗi giây khoảng 300.000 km, đủ vòng quanh Trái Đất 7 lần. Dù vậy, ánh sáng cần hơn 100.000 năm để băng qua Ngân Hà. Bức ảnh Trường Siêu Sâu của Hubble chỉ chụp một mảnh trời nhỏ bằng hạt cát nhìn từ xa mà chứa hàng nghìn thiên hà.",["Hubble_Ultra_Deep_Field_part_d.jpg","NASA/ESA/Hubble","Phạm vi công cộng"]],
+["Hố đen có nuốt chửng mọi thứ không?","Không. Hố đen chỉ hút mạnh ở rất gần; ở xa, lực hấp dẫn của nó giống bất kỳ vật nào có cùng khối lượng.","Nếu Mặt Trời bất ngờ biến thành hố đen cùng khối lượng, Trái Đất vẫn quay quanh nó như cũ, chỉ là lạnh và tối. Chỉ vật nào đi qua chân trời sự kiện mới không thể quay lại. Hố đen M87* trong ảnh là vùng khí nóng viền quanh bóng đen.",["Black_hole_-_Messier_87_crop_max_res.jpg","EHT Collaboration","CC BY 4.0"]],
+["Vì sao Sao Diêm Vương không còn là hành tinh?","Năm 2006, Liên hiệp Thiên văn Quốc tế định nghĩa lại hành tinh; Sao Diêm Vương không dọn sạch quỹ đạo nên bị xếp vào hành tinh lùn.","Một hành tinh phải quay quanh Mặt Trời, đủ lớn để thành hình cầu và thống trị quỹ đạo của mình. Sao Diêm Vương cùng chia sẻ vùng Kuiper với rất nhiều vật thể khác, giống như một người đứng giữa đám đông chứ không phải chủ nhân của cả con phố.",["Pluto_in_True_Color_-_High-Res.jpg","NASA/JHUAPL/SwRI","Phạm vi công cộng"]],
+["Ánh sáng Mặt Trời mất bao lâu để đến Trái Đất?","Khoảng 8 phút 20 giây.","Khoảng cách Trái Đất - Mặt Trời là 150 triệu km. Với tốc độ ánh sáng, bạn vừa uống xong một ngụm nước thì ánh sáng cũng đã đi xong quãng đường. Nghĩa là ta luôn nhìn thấy Mặt Trời của 8 phút trước.",["The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA's_Solar_Dynamics_Observatory_-_20100819.jpg","NASA/SDO","Phạm vi công cộng"]],
+["Có sự sống ngoài Trái Đất không?","Hiện chưa có bằng chứng, nhưng đã tìm thấy hơn 5.000 ngoại hành tinh và nhiều nơi có thể có nước.","Các nhà khoa học tìm kiếm trong vùng ở được, nơi nước lỏng có thể tồn tại, và trên các mặt trăng như Europa hay Enceladus. Tìm sự sống giống như đi tìm một chiếc chìa khóa rơi trong sân vận động đêm tối: ta chưa thấy, nhưng đã có nhiều đèn pin hơn bao giờ hết.",["The_Blue_Marble_(remastered).jpg","NASA (Apollo 17)","Phạm vi công cộng"]]
+];
+const FACTS=["Một ngày trên Sao Kim dài hơn một năm của nó.","Có nhiều ngôi sao trong vũ trụ hơn số hạt cát trên mọi bãi biển Trái Đất.","Dấu chân trên Mặt Trăng có thể tồn tại hàng triệu năm vì không có gió.","Sao Thổ có mật độ thấp hơn nước.","Ánh sáng bạn thấy từ Mặt Trời đã rời đi cách đây khoảng 8 phút."];
+
+/* ===================== HÀM TIỆN ÍCH ===================== */
+const $=s=>document.querySelector(s);
+// Ảnh có xử lý lỗi: hiện khung gradient kèm tên
+const img=(a,name,eager)=>`<img src="${W(a[0])}" alt="${name} – ảnh thật (${a[1]})" ${eager?'':'loading="lazy"'} onerror="this.outerHTML='<div class=fb role=img aria-label=\\'${name}\\'>${name}</div>'">`;
+const src=a=>`Ảnh: ${a[1]} · Giấy phép: ${a[2]} · Nguồn: Wikimedia Commons`;
+const card=(o,i,k)=>`<article class="card rv" style="--ac:${o[6]||['#3DD6F5','#7C5CFF','#FF7AC6'][i%3]}"><div class="ph">${img(o[1],o[0])}</div><div class="cb"><h3>${o[0]}</h3><p>${o[2]}</p><div class="chips">${o[3].map(c=>`<span class="chip">${c}</span>`).join('')}</div><button class="more" data-k="${k}" data-i="${i}">Tìm hiểu thêm</button></div></article>`;
+$('#gs').innerHTML=SOLAR.map((o,i)=>card(o,i,'s')).join('');
+$('#go').innerHTML=OBJS.map((o,i)=>card(o,i,'o')).join('');
+$('#gf').innerHTML=FAQ.map((f,i)=>`<article class="card rv"><div class="cb"><h3>${f[0]}</h3><p>${f[1]}</p><button class="more" data-k="f" data-i="${i}">Tìm hiểu thêm</button></div></article>`).join('');
+
+/* ===================== MODAL (focus trap, ESC, khóa cuộn) ===================== */
+let cur=null,last=null;
+function openOv(el,focus){last=document.activeElement;cur=el;el.classList.add('show');document.body.style.overflow='hidden';(focus||el.querySelector('.x')).focus()}
+function closeOv(){if(!cur)return;cur.classList.remove('show');document.body.style.overflow='';cur=null;last&&last.focus()}
+document.querySelectorAll('.ov').forEach(o=>{o.addEventListener('click',e=>{if(e.target===o||e.target.classList.contains('x'))closeOv()})});
+document.addEventListener('keydown',e=>{
+ if(!cur)return;
+ if(e.key==='Escape')closeOv();
+ if(cur.id==='lb'){if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)}
+ if(e.key==='Tab'){const f=[...cur.querySelectorAll('button')];const a=f[0],b=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===a){e.preventDefault();b.focus()}else if(!e.shiftKey&&document.activeElement===b){e.preventDefault();a.focus()}}
+});
+document.addEventListener('click',e=>{
+ const b=e.target.closest('.more');if(!b)return;
+ const i=+b.dataset.i,k=b.dataset.k;let name,txt,rows=[],im;
+ if(k==='f'){const f=FAQ[i];name=f[0];txt=f[2];im=f[3]}
+ else{const o=(k==='s'?SOLAR:OBJS)[i];name=o[0];txt=o[4];rows=o[5];im=o[1]}
+ $('#mi').innerHTML=img(im,name,true);$('#mt').textContent=name;$('#mp').textContent=txt;
+ $('#mr').innerHTML=rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('');
+ $('#ms').textContent=src(im);openOv($('#md'));
+});
+
+/* ===================== THƯ VIỆN ẢNH + LIGHTBOX ===================== */
+const cats=Object.keys(GAL);let cat=cats[0],gi=0;
+$('#tabs').innerHTML=cats.map(c=>`<button class="tab" data-c="${c}">${c}</button>`).join('');
+function showCat(c){cat=c;document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.c===c));
+ const g=$('#gal');g.style.animation='none';g.offsetHeight;g.style.animation='';
+ g.innerHTML=GAL[c].map((p,i)=>`<button class="card gi" data-g="${i}"><div class="ph">${img([p[1],p[3]],p[0])}</div><div class="cb"><h3>${p[0]}</h3></div></button>`).join('')}
+$('#tabs').addEventListener('click',e=>{const t=e.target.closest('.tab');if(t)showCat(t.dataset.c)});
+$('#gal').addEventListener('click',e=>{const b=e.target.closest('.gi');if(b){gi=+b.dataset.g;lb();openOv($('#lb'))}});
+function lb(){const p=GAL[cat][gi],a=[p[1],p[3],p[4]];$('#li').innerHTML=img(a,p[0],true);$('#lt').textContent=p[0];$('#lp').textContent=p[2];$('#ls').textContent=src(a)}
+function step(d){const n=GAL[cat].length;gi=(gi+d+n)%n;lb()}
+$('#pv').onclick=()=>step(-1);$('#nx').onclick=()=>step(1);
+showCat(cat);
+
+/* ===================== MENU, SCROLL-SPY, TIẾN TRÌNH, PARALLAX ===================== */
+$('#burger').onclick=()=>$('#menu').classList.toggle('open');
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+ const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});$('#menu').classList.remove('open')}}));
+const links=[...document.querySelectorAll('a.l')];
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+['home','solar','objects','gallery','faq'].forEach(id=>spy.observe(document.getElementById(id)));
+const rv=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>rv.observe(el));
+const calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+addEventListener('scroll',()=>{const h=document.documentElement,y=scrollY;
+ $('#prog').style.width=(y/(h.scrollHeight-innerHeight)*100)+'%';
+ if(!calm&&y<innerHeight)$('#hbg').style.transform=`translateY(${y*.25}px)`},{passive:true});
+
+/* ===================== SỰ THẬT HÔM NAY ===================== */
+let fi=Math.floor(Math.random()*FACTS.length);
+const showF=()=>{$('#ft').textContent=FACTS[fi]};showF();
+$('#fb').onclick=()=>{fi=(fi+1)%FACTS.length;showF()};
+
+/* ===================== NỀN SAO LẤP LÁNH (canvas) ===================== */
+const cv=$('#stars'),cx=cv.getContext('2d');let S=[];
+function init(){cv.width=innerWidth;cv.height=innerHeight;S=Array.from({length:Math.min(140,innerWidth/8)},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*1.4+.3,p:Math.random()*6}))}
+function draw(t){cx.clearRect(0,0,cv.width,cv.height);S.forEach(s=>{cx.globalAlpha=calm?.7:.35+.5*Math.sin(t/900+s.p);cx.fillStyle='#EAF0FF';cx.beginPath();cx.arc(s.x,s.y,s.r,0,6.3);cx.fill()});if(!calm)requestAnimationFrame(draw)}
+addEventListener('resize',init);init();requestAnimationFrame(draw);
+</script>
+</body>
+</html>
