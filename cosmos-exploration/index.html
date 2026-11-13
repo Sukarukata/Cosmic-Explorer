@@ -8,10 +8,9 @@
   <meta name="theme-color" content="#04060F" />
 
   <!-- ==========================================================================
-       GOOGLE ANALYTICS (GA4)
-       Thay thế 'G-XXXXXXXXXX' bằng Measurement ID thực tế của bạn
+       GOOGLE ANALYTICS (GA4) – Đã kết nối mã đo lường chính thức
        ========================================================================== -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNFSDY03LS"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -160,6 +159,101 @@
       <!-- Lưới Cards Hệ Mặt Trời -->
       <div class="cards-grid" id="solar-grid">
         <!-- Render bởi JavaScript -->
+      </div>
+    </section>
+
+    <!-- SECTION: MÔ PHỎNG QUỸ ĐẠO HỆ MẶT TRỜI TƯƠNG TÁC (SOLAR ORBIT SIMULATOR) -->
+    <section id="solar-orbit" class="orbit-section" aria-label="Mô phỏng quỹ đạo Hệ Mặt Trời tương tác">
+      <div class="section-header reveal">
+        <span class="section-tag">Mô phỏng trực quan</span>
+        <h2 class="section-title">Vũ điệu Quỹ đạo Hệ Mặt Trời</h2>
+        <p class="section-desc">
+          Quan sát chuyển động thực tế của 8 hành tinh quay quanh Mặt Trời theo định luật Kepler. Tương tác trực tiếp: xoay, phóng to/thu nhỏ, điều chỉnh tốc độ thời gian và nhấp vào từng thiên thể để kích hoạt bảng phân tích dữ liệu.
+        </p>
+      </div>
+
+      <div class="orbit-simulator-card reveal">
+        <!-- Thanh điều khiển mô phỏng -->
+        <div class="orbit-control-bar">
+          <div class="control-group">
+            <button class="btn-orbit-ctrl" id="btn-orbit-toggle" title="Tạm dừng hoặc tiếp tục mô phỏng" aria-label="Tạm dừng / Tiếp tục mô phỏng">
+              <i class="fa-solid fa-pause"></i>
+              <span id="orbit-toggle-text">Tạm dừng</span>
+            </button>
+            <button class="btn-orbit-ctrl" id="btn-orbit-reset" title="Đặt lại góc và căn thẳng hàng các hành tinh" aria-label="Căn thẳng hàng các hành tinh">
+              <i class="fa-solid fa-arrows-rotate"></i>
+              <span>Căn thẳng hàng</span>
+            </button>
+          </div>
+
+          <div class="control-group">
+            <span class="ctrl-label"><i class="fa-solid fa-gauge-high"></i> Tốc độ:</span>
+            <div class="speed-buttons" id="orbit-speed-group" role="group" aria-label="Chọn tốc độ mô phỏng">
+              <button class="btn-speed" data-speed="0.2">0.2x</button>
+              <button class="btn-speed" data-speed="0.5">0.5x</button>
+              <button class="btn-speed active" data-speed="1">1x</button>
+              <button class="btn-speed" data-speed="2">2x</button>
+              <button class="btn-speed" data-speed="5">5x</button>
+              <button class="btn-speed" data-speed="10">10x</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="orbit-toggle-label" title="Ẩn/Hiện đường vẽ quỹ đạo">
+              <input type="checkbox" id="orbit-toggle-trails" checked>
+              <span class="toggle-custom"></span>
+              <span>Đường quỹ đạo</span>
+            </label>
+            <label class="orbit-toggle-label" title="Ẩn/Hiện tên các hành tinh">
+              <input type="checkbox" id="orbit-toggle-labels" checked>
+              <span class="toggle-custom"></span>
+              <span>Nhãn tên</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Khung Canvas tương tác -->
+        <div class="orbit-canvas-container" id="orbit-canvas-container">
+          <canvas id="orbit-canvas"></canvas>
+
+          <!-- Bảng Telemetry HUD nổi -->
+          <div class="orbit-hud-card" id="orbit-hud">
+            <div class="hud-header">
+              <span class="hud-dot" id="hud-dot" style="background-color: #38BDF8; color: #38BDF8;"></span>
+              <div class="hud-name" id="hud-name">Trái Đất</div>
+              <span class="hud-type" id="hud-type">Hành tinh đất đá</span>
+            </div>
+
+            <div class="hud-metrics">
+              <div class="hud-metric">
+                <span class="m-label"><i class="fa-solid fa-arrows-left-right"></i> Khoảng cách MT:</span>
+                <span class="m-val" id="hud-distance">149,6 triệu km (1,00 AU)</span>
+              </div>
+              <div class="hud-metric">
+                <span class="m-label"><i class="fa-solid fa-clock-rotate-left"></i> Chu kỳ quỹ đạo:</span>
+                <span class="m-val" id="hud-period">365,25 ngày</span>
+              </div>
+              <div class="hud-metric">
+                <span class="m-label"><i class="fa-solid fa-bolt"></i> Vận tốc quỹ đạo:</span>
+                <span class="m-val" id="hud-velocity">29,78 km/s</span>
+              </div>
+              <div class="hud-metric">
+                <span class="m-label"><i class="fa-solid fa-circle-dot"></i> Đường kính:</span>
+                <span class="m-val" id="hud-diameter">12.742 km</span>
+              </div>
+            </div>
+
+            <button class="btn-hud-detail" id="btn-hud-detail" type="button">
+              <span>Xem chi tiết chuyên sâu</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <!-- Gợi ý tương tác người dùng -->
+          <div class="orbit-hint-pill">
+            <i class="fa-solid fa-hand-pointer"></i> Di chuột / Click vào hành tinh • Cuộn chuột để zoom • Giữ chuột kéo để lia
+          </div>
+        </div>
       </div>
     </section>
 

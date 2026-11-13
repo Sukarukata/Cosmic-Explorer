@@ -882,9 +882,745 @@
     }
   }
 
+  /* ==========================================================================
+     MÔ PHỎNG QUỸ ĐẠO HỆ MẶT TRỜI TƯƠNG TÁC (SOLAR ORBIT SIMULATOR 60FPS)
+     ========================================================================== */
+  class SolarOrbitSimulator {
+    constructor(canvasSelector = '#orbit-canvas') {
+      this.canvas = $(canvasSelector);
+      if (!this.canvas) return;
+      this.ctx = this.canvas.getContext('2d');
+      this.container = $('#orbit-canvas-container');
+
+      this.isRunning = true;
+      this.speedMultiplier = 1.0;
+      this.showTrails = true;
+      this.showLabels = true;
+      this.selectedPlanetIndex = 3; // Mặc định chọn Trái Đất
+      this.hoveredPlanetIndex = null;
+
+      this.zoom = 1.0;
+      this.minZoom = 0.45;
+      this.maxZoom = 2.6;
+      this.panX = 0;
+      this.panY = 0;
+      this.isDragging = false;
+      this.dragStartX = 0;
+      this.dragStartY = 0;
+      this.hasDragged = false;
+      this.isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      this.initPlanets();
+      this.initAsteroidBelt();
+      this.init();
+      this.bindEvents();
+      this.updateHUD(this.planets[this.selectedPlanetIndex]);
+      this.animate(0);
+    }
+
+    initPlanets() {
+      this.planets = [
+        {
+          id: 'sun',
+          dataIndex: 0,
+          name: 'Mặt Trời',
+          englishName: 'Sun',
+          type: 'Ngôi sao mẹ',
+          color: '#FFB800',
+          radius: 17,
+          orbitRadius: 0,
+          speed: 0,
+          angle: 0,
+          distance: '0 km (Trung tâm)',
+          period: '25 - 35 ngày (tự quay)',
+          velocity: '220 km/s (quanh Ngân Hà)',
+          diameter: '1.392.700 km'
+        },
+        {
+          id: 'mercury',
+          dataIndex: 1,
+          name: 'Sao Thủy',
+          englishName: 'Mercury',
+          type: 'Hành tinh đất đá',
+          color: '#B0B5C0',
+          radius: 3.8,
+          orbitRadius: 38,
+          speed: 0.038,
+          angle: 0.8,
+          distance: '57,9 triệu km (0,39 AU)',
+          period: '87,97 ngày',
+          velocity: '47,36 km/s',
+          diameter: '4.879 km'
+        },
+        {
+          id: 'venus',
+          dataIndex: 2,
+          name: 'Sao Kim',
+          englishName: 'Venus',
+          type: 'Hành tinh đất đá',
+          color: '#F59E0B',
+          radius: 5.5,
+          orbitRadius: 60,
+          speed: 0.024,
+          angle: 2.2,
+          distance: '108,2 triệu km (0,72 AU)',
+          period: '224,7 ngày',
+          velocity: '35,02 km/s',
+          diameter: '12.104 km'
+        },
+        {
+          id: 'earth',
+          dataIndex: 3,
+          name: 'Trái Đất',
+          englishName: 'Earth',
+          type: 'Hành tinh đất đá',
+          color: '#38BDF8',
+          radius: 6.2,
+          orbitRadius: 88,
+          speed: 0.017,
+          angle: 4.1,
+          hasMoon: true,
+          moonAngle: 0,
+          distance: '149,6 triệu km (1,00 AU)',
+          period: '365,25 ngày',
+          velocity: '29,78 km/s',
+          diameter: '12.742 km'
+        },
+        {
+          id: 'mars',
+          dataIndex: 4,
+          name: 'Sao Hỏa',
+          englishName: 'Mars',
+          type: 'Hành tinh đất đá',
+          color: '#EF4444',
+          radius: 4.8,
+          orbitRadius: 118,
+          speed: 0.012,
+          angle: 1.2,
+          distance: '227,9 triệu km (1,52 AU)',
+          period: '687 ngày (1,88 năm)',
+          velocity: '24,07 km/s',
+          diameter: '6.779 km'
+        },
+        {
+          id: 'jupiter',
+          dataIndex: 5,
+          name: 'Sao Mộc',
+          englishName: 'Jupiter',
+          type: 'Hành tinh khí khổng lồ',
+          color: '#FBBF24',
+          radius: 13.5,
+          orbitRadius: 168,
+          speed: 0.0075,
+          angle: 3.5,
+          hasStripes: true,
+          distance: '778,5 triệu km (5,20 AU)',
+          period: '4.333 ngày (11,86 năm)',
+          velocity: '13,07 km/s',
+          diameter: '139.820 km'
+        },
+        {
+          id: 'saturn',
+          dataIndex: 6,
+          name: 'Sao Thổ',
+          englishName: 'Saturn',
+          type: 'Hành tinh khí khổng lồ',
+          color: '#FDE047',
+          radius: 11,
+          orbitRadius: 218,
+          speed: 0.0052,
+          angle: 5.4,
+          hasRings: true,
+          distance: '1.433 triệu km (9,58 AU)',
+          period: '10.759 ngày (29,45 năm)',
+          velocity: '9,69 km/s',
+          diameter: '116.460 km'
+        },
+        {
+          id: 'uranus',
+          dataIndex: 7,
+          name: 'Sao Thiên Vương',
+          englishName: 'Uranus',
+          type: 'Hành tinh băng khổng lồ',
+          color: '#2DD4BF',
+          radius: 8,
+          orbitRadius: 265,
+          speed: 0.0035,
+          angle: 2.7,
+          hasRingSubtle: true,
+          distance: '2.872 triệu km (19,2 AU)',
+          period: '30.687 ngày (84 năm)',
+          velocity: '6,81 km/s',
+          diameter: '50.724 km'
+        },
+        {
+          id: 'neptune',
+          dataIndex: 8,
+          name: 'Sao Hải Vương',
+          englishName: 'Neptune',
+          type: 'Hành tinh băng khổng lồ',
+          color: '#3B82F6',
+          radius: 8,
+          orbitRadius: 308,
+          speed: 0.0026,
+          angle: 0.4,
+          distance: '4.495 triệu km (30,1 AU)',
+          period: '60.190 ngày (164,8 năm)',
+          velocity: '5,43 km/s',
+          diameter: '49.244 km'
+        }
+      ];
+    }
+
+    initAsteroidBelt() {
+      this.asteroids = [];
+      const count = 130;
+      for (let i = 0; i < count; i++) {
+        this.asteroids.push({
+          radius: 138 + Math.random() * 16,
+          angle: Math.random() * Math.PI * 2,
+          speed: 0.009 + (Math.random() * 0.003 - 0.0015),
+          size: Math.random() * 1.2 + 0.4,
+          alpha: Math.random() * 0.45 + 0.15
+        });
+      }
+    }
+
+    init() {
+      this.resize();
+      window.addEventListener('resize', () => this.resize());
+    }
+
+    resize() {
+      if (!this.container) return;
+      const rect = this.container.getBoundingClientRect();
+      this.width = rect.width || 800;
+      this.height = rect.height || 600;
+      this.dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      this.canvas.width = Math.floor(this.width * this.dpr);
+      this.canvas.height = Math.floor(this.height * this.dpr);
+      this.canvas.style.width = `${this.width}px`;
+      this.canvas.style.height = `${this.height}px`;
+
+      const minDimension = Math.min(this.width, this.height);
+      if (minDimension < 500) {
+        this.zoom = 0.72;
+      } else if (minDimension < 700) {
+        this.zoom = 0.88;
+      } else {
+        this.zoom = 1.0;
+      }
+    }
+
+    bindEvents() {
+      // 1. Tạm dừng / Tiếp tục
+      const toggleBtn = $('#btn-orbit-toggle');
+      const toggleText = $('#orbit-toggle-text');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          this.isRunning = !this.isRunning;
+          const icon = toggleBtn.querySelector('i');
+          if (icon) {
+            icon.className = this.isRunning ? 'fa-solid fa-pause' : 'fa-solid fa-play';
+          }
+          if (toggleText) {
+            toggleText.textContent = this.isRunning ? 'Tạm dừng' : 'Tiếp tục';
+          }
+        });
+      }
+
+      // 2. Căn thẳng hàng các hành tinh (Syzygy)
+      const resetBtn = $('#btn-orbit-reset');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          this.planets.forEach(p => p.angle = 0);
+          this.panX = 0;
+          this.panY = 0;
+          this.zoom = this.width < 600 ? 0.75 : 1.0;
+          if (window.cosmosApp && window.cosmosApp.audio) {
+            window.cosmosApp.audio.playChime(660, 'sine', 0.1, 0.3);
+          }
+        });
+      }
+
+      // 3. Tốc độ mô phỏng
+      const speedGroup = $('#orbit-speed-group');
+      if (speedGroup) {
+        speedGroup.addEventListener('click', (e) => {
+          const btn = e.target.closest('.btn-speed');
+          if (!btn) return;
+          $$('.btn-speed', speedGroup).forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          this.speedMultiplier = parseFloat(btn.dataset.speed) || 1.0;
+        });
+      }
+
+      // 4. Bật/Tắt đường quỹ đạo
+      const trailsCheck = $('#orbit-toggle-trails');
+      if (trailsCheck) {
+        trailsCheck.addEventListener('change', () => {
+          this.showTrails = trailsCheck.checked;
+        });
+      }
+
+      // 5. Bật/Tắt nhãn tên
+      const labelsCheck = $('#orbit-toggle-labels');
+      if (labelsCheck) {
+        labelsCheck.addEventListener('change', () => {
+          this.showLabels = labelsCheck.checked;
+        });
+      }
+
+      // 6. Nút xem chi tiết chuyên sâu trên HUD
+      const btnDetail = $('#btn-hud-detail');
+      if (btnDetail) {
+        btnDetail.addEventListener('click', () => {
+          const selected = this.planets[this.selectedPlanetIndex];
+          if (!selected) return;
+          if (window.cosmosApp && typeof window.cosmosApp.openDetailModal === 'function') {
+            window.cosmosApp.openDetailModal('solar', selected.dataIndex);
+          } else {
+            const cardBtn = document.querySelector(`.btn-card-more[data-type="solar"][data-index="${selected.dataIndex}"]`);
+            if (cardBtn) cardBtn.click();
+          }
+        });
+      }
+
+      // 7. Pan & Drag & Hover trên Canvas
+      if (this.container) {
+        const getCanvasCoords = (clientX, clientY) => {
+          const rect = this.canvas.getBoundingClientRect();
+          const screenX = clientX - rect.left;
+          const screenY = clientY - rect.top;
+          const cx = this.width / 2;
+          const cy = this.height / 2;
+          const worldX = (screenX - cx - this.panX) / this.zoom;
+          const worldY = (screenY - cy - this.panY) / this.zoom;
+          return { worldX, worldY, screenX, screenY };
+        };
+
+        const checkHover = (worldX, worldY) => {
+          let found = null;
+          for (let i = 0; i < this.planets.length; i++) {
+            const p = this.planets[i];
+            const dist = Math.hypot(worldX - (p.currentX || 0), worldY - (p.currentY || 0));
+            const hitRadius = Math.max(p.radius + 12, 16);
+            if (dist <= hitRadius) {
+              found = i;
+              break;
+            }
+          }
+          return found;
+        };
+
+        // Chuột
+        this.container.addEventListener('mousedown', (e) => {
+          if (e.button !== 0) return;
+          this.isDragging = true;
+          this.hasDragged = false;
+          this.dragStartX = e.clientX - this.panX;
+          this.dragStartY = e.clientY - this.panY;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+          if (this.isDragging) {
+            const currentPanX = e.clientX - this.dragStartX;
+            const currentPanY = e.clientY - this.dragStartY;
+            if (Math.hypot(currentPanX - this.panX, currentPanY - this.panY) > 4) {
+              this.hasDragged = true;
+            }
+            this.panX = currentPanX;
+            this.panY = currentPanY;
+          }
+
+          if (this.container) {
+            const { worldX, worldY } = getCanvasCoords(e.clientX, e.clientY);
+            this.hoveredPlanetIndex = checkHover(worldX, worldY);
+            if (this.hoveredPlanetIndex !== null) {
+              this.container.style.cursor = 'pointer';
+            } else {
+              this.container.style.cursor = this.isDragging ? 'grabbing' : 'grab';
+            }
+          }
+        });
+
+        window.addEventListener('mouseup', (e) => {
+          if (!this.isDragging) return;
+          this.isDragging = false;
+
+          // Nếu chỉ click chuột (không kéo lia màn hình)
+          if (!this.hasDragged && this.container) {
+            const { worldX, worldY } = getCanvasCoords(e.clientX, e.clientY);
+            const clickedIndex = checkHover(worldX, worldY);
+            if (clickedIndex !== null) {
+              this.selectPlanet(clickedIndex);
+            }
+          }
+        });
+
+        // Cuộn chuột phóng to / thu nhỏ
+        this.container.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          const zoomFactor = e.deltaY < 0 ? 1.12 : 0.89;
+          const newZoom = Math.max(this.minZoom, Math.min(this.maxZoom, this.zoom * zoomFactor));
+          this.zoom = newZoom;
+        }, { passive: false });
+
+        // Hỗ trợ cảm ứng (Touch) trên di động
+        let touchStartDist = 0;
+
+        this.container.addEventListener('touchstart', (e) => {
+          if (e.touches.length === 1) {
+            this.isDragging = true;
+            this.hasDragged = false;
+            this.dragStartX = e.touches[0].clientX - this.panX;
+            this.dragStartY = e.touches[0].clientY - this.panY;
+          } else if (e.touches.length === 2) {
+            this.isDragging = false;
+            touchStartDist = Math.hypot(
+              e.touches[0].clientX - e.touches[1].clientX,
+              e.touches[0].clientY - e.touches[1].clientY
+            );
+          }
+        }, { passive: true });
+
+        this.container.addEventListener('touchmove', (e) => {
+          if (e.touches.length === 1 && this.isDragging) {
+            const currentPanX = e.touches[0].clientX - this.dragStartX;
+            const currentPanY = e.touches[0].clientY - this.dragStartY;
+            if (Math.hypot(currentPanX - this.panX, currentPanY - this.panY) > 5) {
+              this.hasDragged = true;
+            }
+            this.panX = currentPanX;
+            this.panY = currentPanY;
+          } else if (e.touches.length === 2) {
+            const dist = Math.hypot(
+              e.touches[0].clientX - e.touches[1].clientX,
+              e.touches[0].clientY - e.touches[1].clientY
+            );
+            if (touchStartDist > 0) {
+              const factor = dist / touchStartDist;
+              this.zoom = Math.max(this.minZoom, Math.min(this.maxZoom, this.zoom * factor));
+              touchStartDist = dist;
+            }
+          }
+        }, { passive: true });
+
+        this.container.addEventListener('touchend', (e) => {
+          if (!this.hasDragged && e.changedTouches.length === 1) {
+            const touch = e.changedTouches[0];
+            const { worldX, worldY } = getCanvasCoords(touch.clientX, touch.clientY);
+            const clickedIndex = checkHover(worldX, worldY);
+            if (clickedIndex !== null) {
+              this.selectPlanet(clickedIndex);
+            }
+          }
+          this.isDragging = false;
+        });
+      }
+    }
+
+    selectPlanet(index) {
+      this.selectedPlanetIndex = index;
+      const planet = this.planets[index];
+      this.updateHUD(planet);
+
+      // Hiệu ứng âm thanh tinh tế
+      if (window.cosmosApp && window.cosmosApp.audio) {
+        window.cosmosApp.audio.playChime(480 + index * 45, 'triangle', 0.12, 0.28);
+      }
+    }
+
+    updateHUD(planet) {
+      if (!planet) return;
+      const dot = $('#hud-dot');
+      const name = $('#hud-name');
+      const type = $('#hud-type');
+      const dist = $('#hud-distance');
+      const period = $('#hud-period');
+      const vel = $('#hud-velocity');
+      const diam = $('#hud-diameter');
+
+      if (dot) {
+        dot.style.backgroundColor = planet.color;
+        dot.style.color = planet.color;
+      }
+      if (name) name.textContent = planet.name;
+      if (type) type.textContent = planet.type;
+      if (dist) dist.textContent = planet.distance;
+      if (period) period.textContent = planet.period;
+      if (vel) vel.textContent = planet.velocity;
+      if (diam) diam.textContent = planet.diameter;
+    }
+
+    animate(timestamp) {
+      this.draw(timestamp);
+      requestAnimationFrame((t) => this.animate(t));
+    }
+
+    draw(timestamp) {
+      const ctx = this.ctx;
+      ctx.save();
+      ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      ctx.scale(this.dpr, this.dpr);
+
+      const cx = this.width / 2;
+      const cy = this.height / 2;
+
+      // Di chuyển gốc toạ độ đến tâm và áp dụng Pan & Zoom
+      ctx.translate(cx + this.panX, cy + this.panY);
+      ctx.scale(this.zoom, this.zoom);
+
+      // Cập nhật vị trí các hành tinh
+      if (this.isRunning && !this.isReducedMotion) {
+        for (let i = 0; i < this.planets.length; i++) {
+          const p = this.planets[i];
+          p.angle += p.speed * this.speedMultiplier * 0.05;
+          if (p.hasMoon) {
+            p.moonAngle = (p.moonAngle || 0) + 0.08 * this.speedMultiplier;
+          }
+        }
+        for (let j = 0; j < this.asteroids.length; j++) {
+          const ast = this.asteroids[j];
+          ast.angle += ast.speed * this.speedMultiplier * 0.05;
+        }
+      }
+
+      // 1. Vẽ các đường quỹ đạo (Orbit Trails)
+      if (this.showTrails) {
+        ctx.lineWidth = 1;
+        for (let i = 1; i < this.planets.length; i++) {
+          const p = this.planets[i];
+          ctx.beginPath();
+          ctx.arc(0, 0, p.orbitRadius, 0, Math.PI * 2);
+          ctx.strokeStyle = (i === this.selectedPlanetIndex)
+            ? 'rgba(61, 214, 245, 0.45)'
+            : 'rgba(255, 255, 255, 0.09)';
+          ctx.setLineDash(i === this.selectedPlanetIndex ? [4, 4] : []);
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+      }
+
+      // 2. Vẽ Vành đai tiểu hành tinh (Asteroid Belt)
+      for (let j = 0; j < this.asteroids.length; j++) {
+        const ast = this.asteroids[j];
+        const ax = Math.cos(ast.angle) * ast.radius;
+        const ay = Math.sin(ast.angle) * ast.radius;
+        ctx.fillStyle = `rgba(180, 195, 215, ${ast.alpha})`;
+        ctx.beginPath();
+        ctx.arc(ax, ay, ast.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // 3. Tính toán vị trí hiện tại của từng hành tinh
+      for (let i = 0; i < this.planets.length; i++) {
+        const p = this.planets[i];
+        if (p.orbitRadius === 0) {
+          p.currentX = 0;
+          p.currentY = 0;
+        } else {
+          p.currentX = Math.cos(p.angle) * p.orbitRadius;
+          p.currentY = Math.sin(p.angle) * p.orbitRadius;
+        }
+      }
+
+      // 4. Vẽ Mặt Trời (Sun) ở tâm
+      const sun = this.planets[0];
+      const sunPulse = Math.sin(timestamp * 0.003) * 1.5;
+
+      // Hào quang ngoài
+      const sunGlow = ctx.createRadialGradient(0, 0, sun.radius * 0.5, 0, 0, sun.radius + 18 + sunPulse);
+      sunGlow.addColorStop(0, 'rgba(255, 220, 80, 0.9)');
+      sunGlow.addColorStop(0.35, 'rgba(255, 122, 0, 0.5)');
+      sunGlow.addColorStop(0.7, 'rgba(255, 60, 0, 0.2)');
+      sunGlow.addColorStop(1, 'rgba(255, 30, 0, 0)');
+      ctx.fillStyle = sunGlow;
+      ctx.beginPath();
+      ctx.arc(0, 0, sun.radius + 18 + sunPulse, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Thân Mặt Trời
+      const sunBodyGrad = ctx.createRadialGradient(-3, -3, 2, 0, 0, sun.radius);
+      sunBodyGrad.addColorStop(0, '#FFFFFF');
+      sunBodyGrad.addColorStop(0.25, '#FFF275');
+      sunBodyGrad.addColorStop(0.65, '#FF9900');
+      sunBodyGrad.addColorStop(1, '#D93800');
+      ctx.fillStyle = sunBodyGrad;
+      ctx.beginPath();
+      ctx.arc(0, 0, sun.radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // 5. Vẽ 8 hành tinh
+      for (let i = 1; i < this.planets.length; i++) {
+        const p = this.planets[i];
+        const px = p.currentX;
+        const py = p.currentY;
+
+        // Vành đai Sao Thổ (Saturn) - Nửa sau
+        if (p.hasRings) {
+          ctx.save();
+          ctx.translate(px, py);
+          ctx.rotate(0.4);
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.radius * 2.3, p.radius * 0.65, 0, Math.PI, 0);
+          ctx.strokeStyle = 'rgba(253, 224, 71, 0.45)';
+          ctx.lineWidth = 4;
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        // Thân hành tinh với đổ bóng ngược sáng từ Mặt Trời
+        const lightAngle = Math.atan2(py, px) + Math.PI;
+        const lx = px + Math.cos(lightAngle) * (p.radius * 0.45);
+        const ly = py + Math.sin(lightAngle) * (p.radius * 0.45);
+
+        const planetGrad = ctx.createRadialGradient(lx, ly, p.radius * 0.15, px, py, p.radius);
+        planetGrad.addColorStop(0, '#FFFFFF');
+        planetGrad.addColorStop(0.3, p.color);
+        planetGrad.addColorStop(1, '#050710');
+
+        ctx.fillStyle = planetGrad;
+        ctx.beginPath();
+        ctx.arc(px, py, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Vân khí Sao Mộc (Jupiter)
+        if (p.hasStripes) {
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(px, py, p.radius, 0, Math.PI * 2);
+          ctx.clip();
+          ctx.strokeStyle = 'rgba(120, 53, 15, 0.55)';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(px - p.radius, py - 3);
+          ctx.lineTo(px + p.radius, py - 3);
+          ctx.moveTo(px - p.radius, py + 3);
+          ctx.lineTo(px + p.radius, py + 3);
+          ctx.stroke();
+          // Vết Đỏ Lớn
+          ctx.fillStyle = 'rgba(220, 38, 38, 0.85)';
+          ctx.beginPath();
+          ctx.ellipse(px + 4, py + 4, 3, 2, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+
+        // Vành đai Sao Thổ - Nửa trước
+        if (p.hasRings) {
+          ctx.save();
+          ctx.translate(px, py);
+          ctx.rotate(0.4);
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.radius * 2.3, p.radius * 0.65, 0, 0, Math.PI);
+          ctx.strokeStyle = 'rgba(253, 224, 71, 0.7)';
+          ctx.lineWidth = 4;
+          ctx.stroke();
+          // Vòng mảnh ngoài
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.radius * 2.7, p.radius * 0.75, 0, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(253, 224, 71, 0.25)';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        // Vành mờ Sao Thiên Vương (Uranus)
+        if (p.hasRingSubtle) {
+          ctx.save();
+          ctx.translate(px, py);
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.radius * 1.6, p.radius * 0.35, 1.3, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(45, 212, 191, 0.3)';
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        // Vệ tinh Mặt Trăng quanh Trái Đất (Earth)
+        if (p.hasMoon) {
+          const mx = px + Math.cos(p.moonAngle) * 13;
+          const my = py + Math.sin(p.moonAngle) * 13;
+          ctx.fillStyle = '#E2E8F0';
+          ctx.beginPath();
+          ctx.arc(mx, my, 1.6, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // 6. Hiệu ứng chọn & Hover (Reticle / Target Box)
+      for (let i = 0; i < this.planets.length; i++) {
+        const p = this.planets[i];
+        const px = p.currentX;
+        const py = p.currentY;
+        const isSelected = (i === this.selectedPlanetIndex);
+        const isHovered = (i === this.hoveredPlanetIndex);
+
+        if (isSelected || isHovered) {
+          const haloRadius = Math.max(p.radius + 9, 14);
+          ctx.save();
+          ctx.translate(px, py);
+
+          ctx.strokeStyle = isSelected ? '#3DD6F5' : 'rgba(255, 255, 255, 0.6)';
+          ctx.lineWidth = isSelected ? 1.8 : 1;
+          ctx.beginPath();
+          ctx.arc(0, 0, haloRadius, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // 4 góc định vị chuẩn Sci-fi Reticle
+          if (isSelected) {
+            const rot = (timestamp * 0.001) % (Math.PI * 2);
+            ctx.rotate(rot);
+            const cornerDist = haloRadius + 4;
+            const cornerSize = 4;
+            ctx.strokeStyle = '#3DD6F5';
+            ctx.lineWidth = 1.5;
+
+            for (let c = 0; c < 4; c++) {
+              ctx.rotate(Math.PI / 2);
+              ctx.beginPath();
+              ctx.moveTo(cornerDist - cornerSize, cornerDist);
+              ctx.lineTo(cornerDist, cornerDist);
+              ctx.lineTo(cornerDist, cornerDist - cornerSize);
+              ctx.stroke();
+            }
+          }
+
+          ctx.restore();
+        }
+      }
+
+      // 7. Vẽ nhãn tên các hành tinh
+      if (this.showLabels) {
+        ctx.font = '500 11.5px "Be Vietnam Pro", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+
+        for (let i = 0; i < this.planets.length; i++) {
+          const p = this.planets[i];
+          const px = p.currentX;
+          const py = p.currentY;
+          const isSelected = (i === this.selectedPlanetIndex);
+
+          const labelY = py + p.radius + 8;
+          ctx.fillStyle = isSelected ? '#3DD6F5' : 'rgba(226, 232, 240, 0.85)';
+          ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
+          ctx.shadowBlur = 4;
+          ctx.fillText(p.name, px, labelY);
+          ctx.shadowBlur = 0;
+        }
+      }
+
+      ctx.restore();
+    }
+  }
+
   // Khởi động ứng dụng khi DOM đã sẵn sàng
   document.addEventListener('DOMContentLoaded', () => {
     new CosmicCanvas('#stars-canvas');
-    new CosmosApp();
+    window.cosmosApp = new CosmosApp();
+    new SolarOrbitSimulator('#orbit-canvas');
   });
 })();
