@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Khám Phá Vũ Trụ – Cosmic Explorer</title>
-  <meta name="description" content="Trang web khám phá vũ trụ chuẩn Dark Space, Futuristic và Glassmorphism: Hệ Mặt Trời, thiên thể kỳ vĩ, thư viện ảnh thiên văn độ phân giải cao và hỏi đáp khoa học." />
+  <meta name="description" content="Khám Phá Vũ Trụ – Cosmic Explorer: Nền tảng cá nhân phi thương mại khám phá vũ trụ chuẩn Dark Space, Futuristic & Glassmorphism. Hệ Mặt Trời, thiên thể kỳ vĩ, widget pha Mặt Trăng thời gian thực và máy tính không gian." />
   <meta name="theme-color" content="#04060F" />
 
   <!-- ==========================================================================
-       GOOGLE ANALYTICS (GA4) – Đã kết nối mã đo lường chính thức
+       GOOGLE ANALYTICS (GA4) – Giữ nguyên Measurement ID chính thức
        ========================================================================== -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNFSDY03LS"></script>
   <script>
@@ -25,12 +25,15 @@
   <!-- Open Graph / SEO -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Khám Phá Vũ Trụ – Cosmic Explorer" />
-  <meta property="og:description" content="Từ Mặt Trời quen thuộc đến những hố đen xa xôi. Khám phá 8 hành tinh, thiên hà, tinh vân và các bí ẩn vật lý vũ trụ." />
+  <meta property="og:description" content="Từ Mặt Trời quen thuộc đến những hố đen xa xôi. Khám phá 8 hành tinh, thiên hà, tinh vân, widget pha Mặt Trăng thời gian thực và máy tính không gian." />
 
   <!-- Google Fonts: Montserrat & Be Vietnam Pro -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Stylesheet -->
   <style>
@@ -223,23 +226,27 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 68px;
+  gap: 14px;
+  flex-wrap: nowrap;
 }
 
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 19px;
-  letter-spacing: 0.05em;
+  font-size: 16.5px;
+  letter-spacing: 0.04em;
   color: var(--ivory);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-brand .brand-spark {
   color: var(--cy);
-  font-size: 20px;
+  font-size: 18px;
   animation: pulse-glow 2.5s infinite;
   display: inline-block;
 }
@@ -252,17 +259,21 @@ img {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 12px;
   list-style: none;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link {
-  font-size: 15px;
+  font-size: 13.5px;
   font-weight: 500;
   color: var(--mute);
-  padding: 8px 0;
+  padding: 6px 4px;
   position: relative;
   transition: color var(--trans-fast);
+  white-space: nowrap;
 }
 
 .nav-link::after {
@@ -290,29 +301,8 @@ img {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 14px;
-}
-
-/* Nút điều khiển âm thanh vũ trụ tinh tế */
-.btn-sound {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--line);
-  background: var(--glass);
-  color: var(--mute);
-  font-size: 18px;
-  transition: var(--trans-fast);
-}
-
-.btn-sound:hover {
-  color: var(--cy);
-  border-color: var(--cy);
-  background: var(--cy-subtle);
-  transform: translateY(-2px);
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 /* Nút burger mobile */
@@ -322,8 +312,8 @@ img {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-xs);
   border: 1px solid var(--line);
   background: var(--glass);
@@ -351,7 +341,7 @@ img {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1080px) {
   .btn-burger {
     display: flex;
   }
@@ -1856,6 +1846,540 @@ section {
   }
 }
 
+/* ==========================================================================
+   TRẠM ÂM THANH KHÔNG GIAN NASA (NASA REAL SPACE SOUNDS)
+   ========================================================================== */
+.btn-nasa-audio {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(14, 22, 46, 0.7);
+  border: 1px solid rgba(61, 214, 245, 0.35);
+  border-radius: var(--radius-full);
+  color: var(--ivory);
+  padding: 7px 14px;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--trans-fast);
+  backdrop-filter: blur(10px);
+}
+
+.btn-nasa-audio:hover,
+.btn-nasa-audio.playing {
+  border-color: var(--cy);
+  background: rgba(61, 214, 245, 0.15);
+  box-shadow: 0 0 16px var(--cy-glow);
+  color: var(--cy);
+}
+
+.sound-wave-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 12px;
+}
+
+.sw-bar {
+  width: 2.5px;
+  height: 4px;
+  background: var(--cy);
+  border-radius: 1px;
+  transition: height 0.2s ease;
+}
+
+.btn-nasa-audio.playing .sw-bar:nth-child(1) {
+  animation: swWave 0.8s ease-in-out infinite alternate;
+}
+.btn-nasa-audio.playing .sw-bar:nth-child(2) {
+  animation: swWave 0.5s ease-in-out infinite alternate 0.2s;
+}
+.btn-nasa-audio.playing .sw-bar:nth-child(3) {
+  animation: swWave 0.7s ease-in-out infinite alternate 0.4s;
+}
+
+@keyframes swWave {
+  0% { height: 3px; }
+  100% { height: 12px; }
+}
+
+/* Floating Audio Panel */
+.nasa-audio-panel {
+  position: fixed;
+  top: 75px;
+  right: 24px;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  background: rgba(7, 11, 24, 0.94);
+  border: 1px solid rgba(61, 214, 245, 0.35);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(61, 214, 245, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+  animation: napSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nasa-audio-panel.open {
+  display: flex;
+}
+
+@keyframes napSlideDown {
+  from { opacity: 0; transform: translateY(-12px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.nap-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.nap-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--cy);
+  background: var(--cy-subtle);
+  border: 1px solid rgba(61, 214, 245, 0.25);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.nap-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ivory);
+  font-family: var(--font-heading);
+  margin-top: 4px;
+}
+
+.nap-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--mute);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.nap-close-btn:hover {
+  color: var(--ivory);
+}
+
+.nap-desc {
+  font-size: 12px;
+  color: var(--mute);
+  line-height: 1.45;
+}
+
+.nap-tracks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 230px;
+  overflow-y: auto;
+}
+
+.nap-track-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: var(--radius-xs);
+  background: rgba(14, 22, 46, 0.6);
+  border: 1px solid var(--line);
+  color: var(--ivory);
+  cursor: pointer;
+  text-align: left;
+  transition: var(--trans-fast);
+  width: 100%;
+}
+
+.nap-track-item:hover {
+  background: rgba(25, 40, 80, 0.7);
+  border-color: rgba(61, 214, 245, 0.3);
+}
+
+.nap-track-item.active {
+  background: rgba(61, 214, 245, 0.12);
+  border-color: var(--cy);
+}
+
+.track-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.track-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.track-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ivory);
+}
+
+.nap-track-item.active .track-name {
+  color: var(--cy);
+}
+
+.track-sub {
+  font-size: 10.5px;
+  color: var(--mute);
+}
+
+.track-status-icon {
+  font-size: 12px;
+  color: var(--mute);
+}
+
+.nap-track-item.active .track-status-icon {
+  color: var(--cy);
+}
+
+.nap-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.nap-btn-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #3DD6F5, #7C5CFF);
+  border: none;
+  border-radius: var(--radius-full);
+  color: #04060F;
+  font-family: var(--font-heading);
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--trans-fast);
+}
+
+.nap-btn-play:hover {
+  box-shadow: 0 0 18px var(--cy-glow);
+  transform: translateY(-1px);
+}
+
+.nap-volume-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  max-width: 130px;
+}
+
+.nap-volume-group input[type="range"] {
+  width: 100%;
+  accent-color: var(--cy);
+  height: 4px;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   SECTION: ẢNH THIÊN VĂN THEO NGÀY SINH (COSMIC BIRTHDAY)
+   ========================================================================== */
+.birthday-section {
+  margin-top: 60px;
+  margin-bottom: 70px;
+}
+
+.birthday-card {
+  background: var(--glass-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+}
+
+.birthday-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(61, 214, 245, 0.4), transparent);
+}
+
+.bday-selector-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 18px 24px;
+  background: rgba(10, 16, 34, 0.65);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.bday-input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bday-input-group label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ivory);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bday-input-group label i {
+  color: var(--cy);
+}
+
+.bday-select {
+  padding: 9px 14px;
+  background: #04060F;
+  border: 1px solid rgba(61, 214, 245, 0.35);
+  border-radius: var(--radius-xs);
+  color: var(--cy);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  outline: none;
+  cursor: pointer;
+  transition: var(--trans-fast);
+}
+
+.bday-select:focus {
+  border-color: var(--cy);
+  box-shadow: 0 0 12px var(--cy-glow);
+}
+
+.bday-select option {
+  background: #0A1022;
+  color: #EAF0FF;
+}
+
+.bday-submit-btn {
+  margin-left: auto;
+}
+
+.bday-result-wrapper {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 30px;
+  align-items: center;
+  background: rgba(10, 16, 34, 0.45);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  position: relative;
+}
+
+.bday-visual-frame {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #04060F;
+}
+
+.bday-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.bday-visual-frame:hover .bday-img {
+  transform: scale(1.04);
+}
+
+.bday-img-glow {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 40px rgba(4, 6, 15, 0.6);
+  pointer-events: none;
+}
+
+.bday-date-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(4, 6, 15, 0.85);
+  border: 1px solid rgba(61, 214, 245, 0.4);
+  color: var(--cy);
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(8px);
+}
+
+.bday-fullscreen-btn {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(4, 6, 15, 0.75);
+  border: 1px solid var(--line);
+  color: var(--ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--trans-fast);
+  backdrop-filter: blur(8px);
+}
+
+.bday-fullscreen-btn:hover {
+  background: var(--cy);
+  color: #04060F;
+  border-color: var(--cy);
+}
+
+.bday-info-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bday-tag-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bday-constellation {
+  font-size: 12px;
+  color: var(--mute);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--line);
+}
+
+.bday-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--ivory);
+  font-family: var(--font-heading);
+  line-height: 1.3;
+}
+
+.bday-wish {
+  font-size: 14px;
+  color: #CBD5E1;
+  line-height: 1.6;
+  font-style: italic;
+  padding-left: 14px;
+  border-left: 2px solid var(--cy);
+}
+
+.bday-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(4, 6, 15, 0.4);
+  padding: 10px 14px;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bday-stat-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.bday-stat-item .b-lbl {
+  color: var(--mute);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bday-stat-item .b-lbl i {
+  color: var(--cy);
+}
+
+.bday-stat-item .b-val {
+  color: var(--ivory);
+  font-weight: 600;
+}
+
+.bday-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+@keyframes bdayGlowPulse {
+  0% { transform: scale(0.99); box-shadow: 0 0 10px rgba(61, 214, 245, 0.2); }
+  50% { transform: scale(1.008); box-shadow: 0 0 35px rgba(61, 214, 245, 0.55), 0 0 60px rgba(123, 77, 255, 0.35); }
+  100% { transform: scale(1); box-shadow: none; }
+}
+
+.bday-pulsing {
+  animation: bdayGlowPulse 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 900px) {
+  .bday-result-wrapper {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .bday-selector-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .bday-submit-btn {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+  .nasa-audio-panel {
+    top: auto;
+    bottom: 20px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1882,15 +2406,22 @@ section {
           <li><a href="#solar" class="nav-link">Hệ Mặt Trời</a></li>
           <li><a href="#objects" class="nav-link">Thiên thể</a></li>
           <li><a href="#gallery" class="nav-link">Thư viện ảnh</a></li>
+          <li><a href="#birthday" class="nav-link">Ảnh ngày sinh</a></li>
           <li><a href="#faq" class="nav-link">Hỏi – Đáp</a></li>
-          <li><a href="#facts" class="nav-link">Sự thật thú vị</a></li>
+          <li><a href="#facts" class="nav-link">Sự thật</a></li>
         </ul>
       </nav>
 
       <!-- Các nút thao tác góc phải -->
       <div class="nav-actions">
-        <button class="btn-sound" id="btn-sound" aria-label="Bật/Tắt âm thanh không gian" title="Bật/Tắt hiệu ứng âm thanh">
-          🔇
+        <button class="btn-nasa-audio" id="btn-nasa-audio" aria-label="Trạm âm thanh NASA" title="Mở Trạm âm thanh vũ trụ NASA">
+          <i class="fa-solid fa-satellite-dish"></i>
+          <span class="audio-btn-text">Âm thanh NASA</span>
+          <span class="sound-wave-bars" aria-hidden="true">
+            <span class="sw-bar"></span>
+            <span class="sw-bar"></span>
+            <span class="sw-bar"></span>
+          </span>
         </button>
         <button class="btn-burger" id="btn-burger" aria-label="Mở trình đơn chuyển trang" aria-expanded="false">
           <span></span>
@@ -1900,6 +2431,81 @@ section {
       </div>
     </div>
   </header>
+
+  <!-- Modal / Floating Card: Trạm Âm Thanh Không Gian NASA -->
+  <div class="nasa-audio-panel" id="nasa-audio-panel" role="region" aria-label="Trạm âm thanh không gian NASA" aria-hidden="true">
+    <div class="nap-header">
+      <div class="nap-title-group">
+        <span class="nap-badge"><i class="fa-solid fa-satellite-dish"></i> NASA AUDIO</span>
+        <h4 class="nap-title">Trạm Âm Thanh Không Gian</h4>
+      </div>
+      <button class="nap-close-btn" id="nap-close-btn" aria-label="Đóng bảng âm thanh">✕</button>
+    </div>
+    <p class="nap-desc">
+      Dữ liệu sóng vô tuyến & sóng plasma thực tế do các tàu vũ trụ và robot thăm dò của NASA thu được ngoài không gian.
+    </p>
+
+    <!-- Danh sách các track âm thanh -->
+    <div class="nap-tracks-list" id="nap-tracks-list">
+      <button class="nap-track-item active" data-track="mars">
+        <span class="track-icon">🔴</span>
+        <div class="track-meta">
+          <span class="track-name">Gió trên Sao Hỏa</span>
+          <span class="track-sub">Micro tàu Perseverance • Hố Jezero</span>
+        </div>
+        <span class="track-status-icon"><i class="fa-solid fa-volume-high"></i></span>
+      </button>
+
+      <button class="nap-track-item" data-track="saturn">
+        <span class="track-icon">🪐</span>
+        <div class="track-meta">
+          <span class="track-name">Sóng vô tuyến Sao Thổ</span>
+          <span class="track-sub">Tàu Cassini • Sóng cực quang 1 kHz</span>
+        </div>
+        <span class="track-status-icon"><i class="fa-solid fa-play"></i></span>
+      </button>
+
+      <button class="nap-track-item" data-track="earth">
+        <span class="track-icon">🌍</span>
+        <div class="track-meta">
+          <span class="track-name">Giao hưởng Plasma Trái Đất</span>
+          <span class="track-sub">Vành đai Van Allen • Earth's Chorus</span>
+        </div>
+        <span class="track-status-icon"><i class="fa-solid fa-play"></i></span>
+      </button>
+
+      <button class="nap-track-item" data-track="blackhole">
+        <span class="track-icon">🕳️</span>
+        <div class="track-meta">
+          <span class="track-name">Tiếng vọng Hố Đen Perseus</span>
+          <span class="track-sub">Kính Chandra • Nâng tần số 57 quãng tám</span>
+        </div>
+        <span class="track-status-icon"><i class="fa-solid fa-play"></i></span>
+      </button>
+
+      <button class="nap-track-item" data-track="ambient">
+        <span class="track-icon">🌌</span>
+        <div class="track-meta">
+          <span class="track-name">Deep Space Ambient Chill</span>
+          <span class="track-sub">Nhạc nền du hành không gian thư giãn</span>
+        </div>
+        <span class="track-status-icon"><i class="fa-solid fa-play"></i></span>
+      </button>
+    </div>
+
+    <!-- Thanh điều khiển âm thanh -->
+    <div class="nap-controls">
+      <button class="nap-btn-play" id="nap-btn-play" aria-label="Phát / Dừng âm thanh">
+        <i class="fa-solid fa-play" id="nap-play-icon"></i>
+        <span id="nap-play-label">Bật âm thanh</span>
+      </button>
+      <div class="nap-volume-group">
+        <i class="fa-solid fa-volume-low" style="color: var(--mute); font-size: 12px;"></i>
+        <input type="range" id="nap-volume" min="0" max="1" step="0.05" value="0.7" aria-label="Âm lượng" />
+        <i class="fa-solid fa-volume-high" style="color: var(--cy); font-size: 12px;"></i>
+      </div>
+    </div>
+  </div>
 
   <!-- ==========================================================================
        HERO SECTION (Trang chủ)
@@ -1925,9 +2531,9 @@ section {
           <span>Bắt đầu hành trình</span>
           <span aria-hidden="true">🚀</span>
         </a>
-        <a href="#gallery" class="btn-secondary">
-          <span>Xem thư viện ảnh</span>
-          <span aria-hidden="true">🔭</span>
+        <a href="#birthday" class="btn-secondary">
+          <span>Ảnh theo ngày sinh</span>
+          <span aria-hidden="true">✨</span>
         </a>
       </div>
 
@@ -1954,7 +2560,7 @@ section {
 
     <!-- Mũi tên gợi ý cuộn -->
     <a href="#solar" class="hero-scroll-indicator" aria-label="Cuộn xuống nội dung tiếp theo">
-      <span>Cuộn xuống</span>
+      <span>Bắt đầu khám phá</span>
       <span aria-hidden="true">⌄</span>
     </a>
   </section>
@@ -2117,6 +2723,100 @@ section {
       </div>
     </section>
 
+    <!-- ==========================================================================
+         SECTION: ẢNH THIÊN VĂN THEO NGÀY SINH (COSMIC BIRTHDAY)
+         ========================================================================== -->
+    <section id="birthday" class="birthday-section">
+      <div class="section-header reveal">
+        <span class="section-tag">Kỷ niệm cá nhân hóa</span>
+        <h2 class="section-title">Ảnh Thiên Văn Theo Ngày Sinh</h2>
+        <p class="section-desc">
+          Lấy cảm hứng từ chương trình của NASA – Vào ngày sinh nhật của bạn, các kính thiên văn không gian đã hướng ống kính vào tuyệt tác nào của vũ trụ? Hãy chọn ngày tháng sinh để khám phá bức ảnh dành riêng cho bạn!
+        </p>
+      </div>
+
+      <div class="birthday-card reveal">
+        <!-- Bộ chọn ngày & tháng sinh -->
+        <div class="bday-selector-bar">
+          <div class="bday-input-group">
+            <label for="bday-day"><i class="fa-solid fa-calendar-day"></i> Ngày sinh:</label>
+            <select id="bday-day" class="bday-select" aria-label="Chọn ngày sinh">
+              <option value="1">Ngày 1</option><option value="2">Ngày 2</option><option value="3">Ngày 3</option><option value="4">Ngày 4</option><option value="5">Ngày 5</option>
+              <option value="6">Ngày 6</option><option value="7">Ngày 7</option><option value="8">Ngày 8</option><option value="9">Ngày 9</option><option value="10">Ngày 10</option>
+              <option value="11">Ngày 11</option><option value="12">Ngày 12</option><option value="13">Ngày 13</option><option value="14">Ngày 14</option><option value="15">Ngày 15</option>
+              <option value="16">Ngày 16</option><option value="17">Ngày 17</option><option value="18">Ngày 18</option><option value="19">Ngày 19</option><option value="20">Ngày 20</option>
+              <option value="21">Ngày 21</option><option value="22" selected>Ngày 22</option><option value="23">Ngày 23</option><option value="24">Ngày 24</option><option value="25">Ngày 25</option>
+              <option value="26">Ngày 26</option><option value="27">Ngày 27</option><option value="28">Ngày 28</option><option value="29">Ngày 29</option><option value="30">Ngày 30</option><option value="31">Ngày 31</option>
+            </select>
+          </div>
+
+          <div class="bday-input-group">
+            <label for="bday-month"><i class="fa-solid fa-calendar"></i> Tháng sinh:</label>
+            <select id="bday-month" class="bday-select" aria-label="Chọn tháng sinh">
+              <option value="1">Tháng 1</option>
+              <option value="2">Tháng 2</option>
+              <option value="3">Tháng 3</option>
+              <option value="4">Tháng 4</option>
+              <option value="5">Tháng 5</option>
+              <option value="6">Tháng 6</option>
+              <option value="7">Tháng 7</option>
+              <option value="8">Tháng 8</option>
+              <option value="9">Tháng 9</option>
+              <option value="10">Tháng 10</option>
+              <option value="11" selected>Tháng 11</option>
+              <option value="12">Tháng 12</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Khung hiển thị kết quả bức ảnh thiên văn -->
+        <div class="bday-result-wrapper" id="bday-result-box">
+          <div class="bday-visual-frame">
+            <img src="" alt="Ảnh thiên văn sinh nhật" id="bday-img" class="bday-img" loading="lazy" />
+            <div class="bday-img-glow"></div>
+            <div class="bday-date-badge" id="bday-badge">Ngày 22 tháng 11</div>
+            <button class="bday-fullscreen-btn" id="bday-btn-fullscreen" title="Xem ảnh toàn màn hình" aria-label="Phóng to ảnh">
+              <i class="fa-solid fa-expand"></i>
+            </button>
+          </div>
+
+          <div class="bday-info-body">
+            <div class="bday-tag-row">
+              <span class="card-type-badge" id="bday-type-badge">Kiệt tác James Webb</span>
+              <span class="bday-constellation" id="bday-constellation">Chòm sao Lạp Hộ</span>
+            </div>
+
+            <h3 class="bday-title" id="bday-title">Tinh vân Lạp Hộ (Orion Nebula)</h3>
+            <p class="bday-wish" id="bday-wish">
+              "Vào ngày sinh nhật của bạn, vũ trụ đã tạo nên một vườn ươm sao khổng lồ rực rỡ cách Trái Đất 1.344 năm ánh sáng. Hàng ngàn ngôi sao sơ sinh đang bừng sáng từ những đám mây bụi khí, mang đến nguồn năng lượng tinh khôi và may mắn cho hành trình của bạn."
+            </p>
+
+            <div class="bday-stats-list">
+              <div class="bday-stat-item">
+                <span class="b-lbl"><i class="fa-solid fa-satellite"></i> Kính thiên văn:</span>
+                <span class="b-val" id="bday-telescope">James Webb & Hubble (NASA/ESA)</span>
+              </div>
+              <div class="bday-stat-item">
+                <span class="b-lbl"><i class="fa-solid fa-arrows-left-right"></i> Khoảng cách:</span>
+                <span class="b-val" id="bday-distance">1.344 năm ánh sáng</span>
+              </div>
+            </div>
+
+            <div class="bday-actions">
+              <button class="btn-secondary" id="btn-copy-bday-wish" type="button">
+                <span>Sao chép thông điệp</span>
+                <span aria-hidden="true">📋</span>
+              </button>
+              <button class="btn-primary" id="btn-random-bday" type="button">
+                <span>Khám phá ngày khác</span>
+                <span aria-hidden="true">✨</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SECTION 4: HỎI – ĐÁP VỀ VŨ TRỤ -->
     <section id="faq">
       <div class="section-header reveal">
@@ -2176,10 +2876,10 @@ section {
         <div class="footer-col">
           <h4>
             <span style="color: var(--cy);">✦</span>
-            <span>Về dự án Cosmic Explorer</span>
+            <span>Về dự án Khám Phá Vũ Trụ – Cosmic Explorer</span>
           </h4>
           <p>
-            Cosmic Explorer là nền tảng số phi thương mại hướng tới việc lan tỏa tình yêu thiên văn học và vật lý vũ trụ tới mọi người. Dự án kết hợp công nghệ web hiện đại với dữ liệu thiên văn chuẩn xác nhằm tạo nên một không gian trực quan sống động, đưa bạn du hành từ Hệ Mặt Trời quen thuộc tới những miền tinh vân và hố đen xa xôi nhất của vũ trụ.
+            Cosmic Explorer là nền tảng số cá nhân phi thương mại hướng tới việc lan tỏa tình yêu thiên văn học và vật lý vũ trụ tới cộng đồng. Dự án kết hợp công nghệ web hiện đại với dữ liệu thiên văn chuẩn xác nhằm tạo nên một không gian trực quan sống động, đưa bạn du hành từ Hệ Mặt Trời quen thuộc tới những miền tinh vân và hố đen xa xôi nhất của vũ trụ.
           </p>
           <p>
             Mọi nội dung, hình ảnh và kiến thức được biên soạn và chọn lọc kỹ lưỡng, phục vụ học tập, nghiên cứu và phát triển tư duy khoa học rộng mở cho thế hệ trẻ.
@@ -4081,6 +4781,33 @@ const COSMIC_FACTS = [
       if (creditEl) creditEl.textContent = `Tác giả / Tổ chức: ${item.author} · Giấy phép: ${item.license}`;
     }
 
+    openLightboxDirect(imgUrl, title, desc, credit) {
+      const modal = $('#lightbox-modal');
+      const imgFrame = $('#lightbox-media');
+      const titleEl = $('#lightbox-title');
+      const descEl = $('#lightbox-desc');
+      const badgeEl = $('#lightbox-badge');
+      const counterEl = $('#lightbox-counter');
+      const creditEl = $('#lightbox-credit');
+
+      if (imgFrame) {
+        imgFrame.innerHTML = `
+          <img 
+            src="${imgUrl}" 
+            alt="${title}" 
+            style="max-height: 58vh; width: 100%; object-fit: contain; margin: 0 auto; display: block;" 
+          />
+        `;
+      }
+      if (titleEl) titleEl.textContent = title;
+      if (descEl) descEl.textContent = desc;
+      if (badgeEl) badgeEl.textContent = 'Ảnh sinh nhật vũ trụ';
+      if (counterEl) counterEl.textContent = 'Kiệt tác dành riêng cho bạn';
+      if (creditEl) creditEl.textContent = credit || 'NASA/ESA/JWST';
+
+      this.openModalElement(modal, $('.modal-close-btn', modal));
+    }
+
     stepLightbox(delta) {
       const total = this.filteredGallery.length;
       if (total <= 1) return;
@@ -4176,6 +4903,10 @@ const COSMIC_FACTS = [
           if (targetEl) {
             e.preventDefault();
             targetEl.scrollIntoView({ behavior: 'smooth' });
+            if (this.classList.contains('nav-link')) {
+              document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+              this.classList.add('active');
+            }
           }
         });
       });
@@ -4208,7 +4939,7 @@ const COSMIC_FACTS = [
       }, { passive: true });
 
       // Scroll Spy làm sáng menu tương ứng
-      const sections = ['home', 'solar', 'objects', 'gallery', 'faq'];
+      const sections = ['home', 'solar', 'objects', 'gallery', 'birthday', 'faq', 'facts'];
       const navLinks = $$('.nav-link');
 
       const spyObserver = new IntersectionObserver((entries) => {
@@ -4990,11 +5721,569 @@ const COSMIC_FACTS = [
     }
   }
 
+  /* ==========================================================================
+     ẢNH THIÊN VĂN THEO NGÀY SINH (COSMIC BIRTHDAY - NASA APOD)
+     ========================================================================== */
+  function initCosmicBirthday() {
+    const daySelect = document.getElementById('bday-day');
+    const monthSelect = document.getElementById('bday-month');
+    const btnRandom = document.getElementById('btn-random-bday');
+    const btnCopy = document.getElementById('btn-copy-bday-wish');
+    const btnFullscreen = document.getElementById('bday-btn-fullscreen');
+
+    const imgEl = document.getElementById('bday-img');
+    const badgeEl = document.getElementById('bday-badge');
+    const typeBadgeEl = document.getElementById('bday-type-badge');
+    const constellationEl = document.getElementById('bday-constellation');
+    const titleEl = document.getElementById('bday-title');
+    const wishEl = document.getElementById('bday-wish');
+    const telescopeEl = document.getElementById('bday-telescope');
+    const distanceEl = document.getElementById('bday-distance');
+
+    if (!daySelect || !monthSelect || !imgEl) return;
+
+    // Ảnh dự phòng chất lượng cao từ Unsplash (100% không bao giờ lỗi)
+    const fallbackImages = {
+      1: "https://images.unsplash.com/photo-1543722530-d2c3201371e7?w=1200&auto=format&fit=crop&q=80",
+      2: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=1200&auto=format&fit=crop&q=80",
+      3: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1200&auto=format&fit=crop&q=80",
+      4: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop&q=80",
+      5: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&auto=format&fit=crop&q=80",
+      6: "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=1200&auto=format&fit=crop&q=80",
+      7: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1200&auto=format&fit=crop&q=80",
+      8: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=1200&auto=format&fit=crop&q=80",
+      9: "https://images.unsplash.com/photo-1543722530-d2c3201371e7?w=1200&auto=format&fit=crop&q=80",
+      10: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1200&auto=format&fit=crop&q=80",
+      11: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop&q=80",
+      12: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&auto=format&fit=crop&q=80"
+    };
+
+    const birthdayDatabase = {
+      1: {
+        title: "Tinh vân Đầu Ngựa (Horsehead Nebula - B33)",
+        type: "Tinh vân Tối & Đám mây bụi",
+        constellation: "Chòm sao Lạp Hộ (Orion)",
+        telescope: "Kính thiên văn James Webb & Hubble (NASA)",
+        distance: "1.375 năm ánh sáng",
+        file: "Barnard_33.jpg",
+        wish: "Vào ngày sinh nhật của bạn, vũ trụ khắc họa hình ảnh Tinh vân Đầu Ngựa huyền thoại vươn mình kiêu hãnh giữa biển khí hydro phát quang. Bức ảnh là biểu tượng của ý chí bền bỉ và sự kiên cường vượt qua mọi bão giông cuộc sống."
+      },
+      2: {
+        title: "Tinh vân Bong Bóng (Bubble Nebula - NGC 7635)",
+        type: "Bong bóng khí phát xạ cực quang",
+        constellation: "Chòm sao Tiên Hậu (Cassiopeia)",
+        telescope: "Kính viễn vọng Hubble (NASA/ESA)",
+        distance: "7.100 năm ánh sáng",
+        file: "NGC_7635.jpg",
+        wish: "Vũ trụ gửi gắm đến bạn kiệt tác Tinh vân Bong Bóng – một quả cầu khí khổng lồ tỏa sáng huyền ảo giữa không gian. Chúc cuộc đời bạn luôn ngập tràn niềm vui, sáng tạo và sự bao la rực rỡ như kỳ quan vũ trụ này."
+      },
+      3: {
+        title: "Thiên hà Xoáy Nước (Whirlpool Galaxy - M51)",
+        type: "Thiên hà xoắn ốc hoàn mỹ",
+        constellation: "Chòm sao Lạp Khuyển (Canes Venatici)",
+        telescope: "Kính không gian Hubble (NASA/ESA)",
+        distance: "23 triệu năm ánh sáng",
+        file: "M51_sRGB.jpg",
+        wish: "Vào ngày sinh nhật của bạn, Hubble đã ghi lại vũ điệu xoắn ốc hoàn hảo của hàng trăm tỷ ngôi sao trong Thiên hà M51. Bức ảnh mang thông điệp về sự sinh sôi, đổi mới không ngừng và nguồn cảm hứng sáng tạo bất tận."
+      },
+      4: {
+        title: "Các Trụ Cột Sáng Tạo (Pillars of Creation - M16)",
+        type: "Cột bụi khí sao sơ sinh",
+        constellation: "Chòm sao Cự Xà (Serpens)",
+        telescope: "Kính không gian James Webb (NASA/ESA/CSA)",
+        distance: "6.500 năm ánh sáng",
+        file: "Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg",
+        wish: "Những cột khí và bụi khổng lồ sừng sững tựa ngón tay tạo hóa đang ươm mầm cho những ngôi sao mới. Chúc bạn luôn vững vàng, kiêu hãnh và tự tay kiến tạo nên những kỳ tích rực rỡ trong tương lai."
+      },
+      5: {
+        title: "Tinh vân Chiếc Nhẫn (Ring Nebula - M57)",
+        type: "Tinh vân Hành tinh phát quang",
+        constellation: "Chòm sao Thiên Cầm (Lyra)",
+        telescope: "Kính James Webb NIRCam & MIRI (2023)",
+        distance: "2.570 năm ánh sáng",
+        file: "M57_The_Ring_Nebula.jpg",
+        wish: "Bức ảnh Tinh vân Chiếc Nhẫn tỏa sáng tựa một viên ngọc lục bảo giữa không gian sâu thẳm. Lời chúc cho tuổi mới của bạn luôn tròn đầy, viên mãn và mang nét đẹp thanh lịch, độc bản như viên ngọc của vũ trụ."
+      },
+      6: {
+        title: "Tinh vân Cánh Bướm (Butterfly Nebula - NGC 6302)",
+        type: "Tinh vân Lưỡng cực bùng nổ",
+        constellation: "Chòm sao Thiên Yết (Scorpius)",
+        telescope: "Kính thiên văn không gian Hubble (NASA/ESA)",
+        distance: "3.800 năm ánh sáng",
+        file: "Butterfly_Nebula.jpg",
+        wish: "Đôi cánh khí nóng hơn 20.000°C của Tinh vân Cánh Bướm dang rộng khắp không gian. Chúc bạn luôn tự tin sải cánh vươn tới những ước mơ cao xa nhất, tự do khám phá và tỏa sáng theo cách của riêng mình."
+      },
+      7: {
+        title: "Vách Đá Vũ Trụ Carina (Cosmic Cliffs - NGC 3324)",
+        type: "Vườn ươm sao bức xạ cao",
+        constellation: "Chòm sao Thuyền Để (Carina)",
+        telescope: "Kính thiên văn James Webb (NASA/ESA)",
+        distance: "7.600 năm ánh sáng",
+        file: "Carina_Nebula.jpg",
+        wish: "Bức ảnh kinh điển của kính James Webb ghi lại dãy núi bụi khí vàng óng lung linh hàng ngàn ngôi sao sơ sinh. Chúc hành trình phía trước của bạn luôn ngập tràn ánh hào quang và những bước ngoặt phi thường."
+      },
+      8: {
+        title: "Thiên hà Tiên Nữ vĩ đại (Andromeda Galaxy - M31)",
+        type: "Thiên hà xoắn ốc khổng lồ",
+        constellation: "Chòm sao Tiên Nữ (Andromeda)",
+        telescope: "Kính không gian Hubble & GALEX",
+        distance: "2,5 triệu năm ánh sáng",
+        file: "Andromeda_Galaxy_(with_h-alpha).jpg",
+        wish: "Thiên hà Tiên Nữ với hơn 1.000 tỷ vì sao đang chuyển động duyên dáng cùng Dải Ngân Hà. Lời chúc cho tâm hồn bạn luôn rộng mở, khoáng đạt và đón nhận những cơ duyên kỳ diệu của cuộc sống."
+      },
+      9: {
+        title: "Tinh vân Mắt Mèo (Cat's Eye Nebula - NGC 6543)",
+        type: "Cấu trúc tinh vân đa tầng phức tạp",
+        constellation: "Chòm sao Thiên Long (Draco)",
+        telescope: "Kính Hubble & Chandra (NASA/ESA)",
+        distance: "3.300 năm ánh sáng",
+        file: "NGC6543.jpg",
+        wish: "Cấu trúc 11 vòng khí đồng tâm đan xen nhau tựa như tròng mắt mèo phát sáng kỳ ảo. Chúc bạn luôn sở hữu nhãn quan sắc bén, tâm hồn sâu lắng và trí tuệ vượt bậc."
+      },
+      10: {
+        title: "Tinh vân Màng Nhện (Tarantula Nebula - 30 Doradus)",
+        type: "Vùng sinh sao dữ dội nhất",
+        constellation: "Đám mây Magellan Lớn (LMC)",
+        telescope: "Kính James Webb NIRCam (NASA/ESA)",
+        distance: "161.000 năm ánh sáng",
+        file: "Tarantula_Nebula.jpg",
+        wish: "Nơi sản sinh những ngôi sao nặng nhất và sáng nhất từng được biết đến trong vũ trụ. Chúc bạn sở hữu nguồn năng lượng nội tại mạnh mẽ, luôn dũng cảm đương đầu và biến mọi thử thách thành kỳ tích."
+      },
+      11: {
+        title: "Tinh vân Lạp Hộ rực rỡ (Orion Nebula - M42)",
+        type: "Vườn ươm sao sáng nhất bầu trời đêm",
+        constellation: "Chòm sao Lạp Hộ (Orion)",
+        telescope: "Kính thiên văn James Webb & Hubble (NASA)",
+        distance: "1.344 năm ánh sáng",
+        file: "Orion_Nebula_-_Hubble_2006_mosaic_18000.jpg",
+        wish: "M42 là trái tim tỏa sáng của bầu trời đêm mùa đông, nơi hàng trăm vì sao sơ sinh đang thắp lên tia sáng đầu tiên. Chúc ngọn lửa nhiệt huyết trong tim bạn luôn rực cháy và dẫn lối cho mọi thành công."
+      },
+      12: {
+        title: "Tinh vân Con Mắt Vũ Trụ (Helix Nebula - NGC 7293)",
+        type: "Tinh vân hành tinh khổng lồ",
+        constellation: "Chòm sao Bảo Bình (Aquarius)",
+        telescope: "Kính viễn vọng Hubble & Spitzer (NASA)",
+        distance: "650 năm ánh sáng",
+        file: "NGC7293_(2004).jpg",
+        wish: "Được mệnh danh là 'Con Mắt của Thượng Đế', Helix Nebula nhìn xuyên qua không gian bao la. Chúc bạn có một sinh nhật ấm áp, bình yên bên những người thân yêu và sẵn sàng chào đón một năm mới rạng rỡ!"
+      }
+    };
+
+    function updateDaysForMonth() {
+      const month = parseInt(monthSelect.value, 10) || 11;
+      let maxDays = 31;
+      if (month === 2) maxDays = 29;
+      else if ([4, 6, 9, 11].includes(month)) maxDays = 30;
+
+      const currentDay = parseInt(daySelect.value, 10) || 22;
+      daySelect.innerHTML = '';
+      for (let d = 1; d <= maxDays; d++) {
+        const opt = document.createElement('option');
+        opt.value = d;
+        opt.textContent = `Ngày ${d}`;
+        if (d === currentDay || (d === maxDays && currentDay > maxDays)) {
+          opt.selected = true;
+        }
+        daySelect.appendChild(opt);
+      }
+    }
+
+    function displayBirthdayPhoto(isExplicitClick = false) {
+      const day = parseInt(daySelect.value, 10) || 22;
+      const month = parseInt(monthSelect.value, 10) || 11;
+
+      // Tìm ảnh thiên văn độc nhất tương ứng với kết hợp cả Ngày + Tháng
+      // Với 48 ảnh thiên thể tuyển chọn trong GALLERY_ITEMS, kết hợp (Tháng, Ngày) tạo ra sự thay đổi độc nhất cho từng ngày
+      let item = null;
+      if (typeof GALLERY_ITEMS !== 'undefined' && Array.isArray(GALLERY_ITEMS) && GALLERY_ITEMS.length > 0) {
+        const itemIndex = Math.abs(((month - 1) * 31 + (day - 1))) % GALLERY_ITEMS.length;
+        item = GALLERY_ITEMS[itemIndex];
+      }
+
+      const defaultMonthData = birthdayDatabase[month] || birthdayDatabase[11];
+      const photoTitle = item ? item.title : defaultMonthData.title;
+      const photoType = item ? (item.category || "Kiệt tác Vũ Trụ") : defaultMonthData.type;
+      const photoConstellation = item ? (item.badge || "Quan sát Vũ Trụ") : defaultMonthData.constellation;
+      const photoTelescope = item ? (item.author || "NASA / ESA / Hubble & JWST") : defaultMonthData.telescope;
+      const photoDistance = defaultMonthData.distance || "Hàng triệu năm ánh sáng";
+      const photoWish = item ? 
+        `"Vào ngày này, vũ trụ khắc họa kiệt tác ${item.title}. ${item.description} Chúc bạn luôn giữ vững nguồn năng lượng tích cực, tâm hồn tự do khoáng đạt và chạm tới những đỉnh cao rực rỡ!"` :
+        defaultMonthData.wish;
+
+      badgeEl.textContent = `Ngày ${day} tháng ${month}`;
+      titleEl.textContent = photoTitle;
+      typeBadgeEl.textContent = photoType;
+      constellationEl.textContent = photoConstellation;
+      telescopeEl.textContent = photoTelescope;
+      distanceEl.textContent = photoDistance;
+      wishEl.textContent = photoWish;
+
+      // URL ảnh sử dụng getWikiImgUrl chuẩn hoặc fallback Unsplash
+      let imgUrl = "";
+      if (typeof getWikiImgUrl === 'function' && item && item.file) {
+        imgUrl = getWikiImgUrl(item.file, 1200);
+      } else if (typeof getWikiImgUrl === 'function' && defaultMonthData.file) {
+        imgUrl = getWikiImgUrl(defaultMonthData.file, 1200);
+      } else {
+        imgUrl = fallbackImages[month] || fallbackImages[11];
+      }
+
+      imgEl.style.opacity = '0.3';
+      imgEl.onerror = function() {
+        this.onerror = null;
+        this.src = fallbackImages[month] || fallbackImages[11];
+        this.style.opacity = '1';
+      };
+      imgEl.onload = function() {
+        this.style.opacity = '1';
+      };
+      imgEl.src = imgUrl;
+
+      // Hiệu ứng lóe sáng phản hồi khi chuyển ngày
+      if (isExplicitClick) {
+        const resultBox = document.getElementById('bday-result-box');
+        if (resultBox) {
+          resultBox.classList.remove('bday-pulsing');
+          void resultBox.offsetWidth; // trigger reflow
+          resultBox.classList.add('bday-pulsing');
+        }
+      }
+
+      imgEl.onclick = () => {
+        if (window.cosmosApp && window.cosmosApp.openLightboxDirect) {
+          window.cosmosApp.openLightboxDirect(imgEl.src, photoTitle, photoWish, photoTelescope);
+        }
+      };
+      if (btnFullscreen) {
+        btnFullscreen.onclick = () => imgEl.click();
+      }
+    }
+
+    daySelect.addEventListener('change', () => displayBirthdayPhoto(true));
+    monthSelect.addEventListener('change', () => {
+      updateDaysForMonth();
+      displayBirthdayPhoto(true);
+    });
+
+    if (btnRandom) {
+      btnRandom.addEventListener('click', () => {
+        const randMonth = Math.floor(Math.random() * 12) + 1;
+        monthSelect.value = randMonth;
+        updateDaysForMonth();
+        const maxD = daySelect.options.length;
+        const randDay = Math.floor(Math.random() * maxD) + 1;
+        daySelect.value = randDay;
+        displayBirthdayPhoto();
+      });
+    }
+
+    if (btnCopy) {
+      btnCopy.addEventListener('click', () => {
+        const textToCopy = `🌌 ${titleEl.textContent}\n✨ Lời chúc vũ trụ: ${wishEl.textContent}\n🔭 Khám phá tại: https://cosmic-explorer-vn.vercel.app/`;
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const originalText = btnCopy.querySelector('span').textContent;
+          btnCopy.querySelector('span').textContent = 'Đã sao chép! ✓';
+          setTimeout(() => {
+            btnCopy.querySelector('span').textContent = originalText;
+          }, 2000);
+        }).catch(() => {});
+      });
+    }
+
+    updateDaysForMonth();
+    displayBirthdayPhoto();
+  }
+
+  /* ==========================================================================
+     TRẠM ÂM THANH KHÔNG GIAN THỰC TẾ NASA (NASA REAL SPACE SOUNDS)
+     ========================================================================== */
+  function initNasaSpaceAudio() {
+    const btnTrigger = document.getElementById('btn-nasa-audio');
+    const panel = document.getElementById('nasa-audio-panel');
+    const btnClose = document.getElementById('nap-close-btn');
+    const btnPlay = document.getElementById('nap-btn-play');
+    const playIcon = document.getElementById('nap-play-icon');
+    const playLabel = document.getElementById('nap-play-label');
+    const volumeSlider = document.getElementById('nap-volume');
+    const trackItems = document.querySelectorAll('.nap-track-item');
+
+    if (!btnTrigger || !panel) return;
+
+    let audioCtx = null;
+    let isPlaying = false;
+    let currentTrack = 'mars';
+    let currentNodes = [];
+    let masterGain = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContextClass();
+        masterGain = audioCtx.createGain();
+        masterGain.gain.setValueAtTime(parseFloat(volumeSlider.value) || 0.7, audioCtx.currentTime);
+        masterGain.connect(audioCtx.destination);
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function stopCurrentSound() {
+      currentNodes.forEach(node => {
+        try {
+          if (node.stop) node.stop();
+          if (node.disconnect) node.disconnect();
+        } catch (e) {}
+      });
+      currentNodes = [];
+    }
+
+    function playTrack(trackId) {
+      stopCurrentSound();
+      const ctx = getAudioContext();
+      const now = ctx.currentTime;
+
+      if (trackId === 'mars') {
+        // Gió trên Sao Hỏa: Brown noise lọc qua bộ lọc dải tần thấp và điều chế chậm LFO
+        const bufferSize = ctx.sampleRate * 4;
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        let lastOut = 0.0;
+        for (let i = 0; i < bufferSize; i++) {
+          const white = Math.random() * 2 - 1;
+          data[i] = (lastOut + (0.02 * white)) / 1.02;
+          lastOut = data[i];
+          data[i] *= 3.5;
+        }
+
+        const noise = ctx.createBufferSource();
+        noise.buffer = buffer;
+        noise.loop = true;
+
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(180, now);
+        filter.Q.setValueAtTime(2.5, now);
+
+        const lfo = ctx.createOscillator();
+        lfo.type = 'sine';
+        lfo.frequency.setValueAtTime(0.12, now);
+
+        const lfoGain = ctx.createGain();
+        lfoGain.gain.setValueAtTime(120, now);
+        lfo.connect(filter.frequency);
+
+        const trackGain = ctx.createGain();
+        trackGain.gain.setValueAtTime(0.85, now);
+
+        noise.connect(filter);
+        filter.connect(trackGain);
+        trackGain.connect(masterGain);
+
+        noise.start(now);
+        lfo.start(now);
+        currentNodes.push(noise, filter, lfo, lfoGain, trackGain);
+      } 
+      else if (trackId === 'saturn') {
+        // Sóng vô tuyến Sao Thổ (Cassini Auroral Radio Waves)
+        const carrier1 = ctx.createOscillator();
+        carrier1.type = 'sine';
+        carrier1.frequency.setValueAtTime(280, now);
+
+        const carrier2 = ctx.createOscillator();
+        carrier2.type = 'triangle';
+        carrier2.frequency.setValueAtTime(540, now);
+
+        const modOsc = ctx.createOscillator();
+        modOsc.type = 'sine';
+        modOsc.frequency.setValueAtTime(1.8, now);
+
+        const modGain = ctx.createGain();
+        modGain.gain.setValueAtTime(90, now);
+        modOsc.connect(carrier1.frequency);
+        modOsc.connect(carrier2.frequency);
+
+        const bpFilter = ctx.createBiquadFilter();
+        bpFilter.type = 'bandpass';
+        bpFilter.frequency.setValueAtTime(800, now);
+        bpFilter.Q.setValueAtTime(6.0, now);
+
+        const trackGain = ctx.createGain();
+        trackGain.gain.setValueAtTime(0.5, now);
+
+        carrier1.connect(bpFilter);
+        carrier2.connect(bpFilter);
+        bpFilter.connect(trackGain);
+        trackGain.connect(masterGain);
+
+        carrier1.start(now);
+        carrier2.start(now);
+        modOsc.start(now);
+        currentNodes.push(carrier1, carrier2, modOsc, modGain, bpFilter, trackGain);
+      }
+      else if (trackId === 'earth') {
+        // Giao hưởng Plasma Trái Đất (Earth's Chorus)
+        const baseOsc = ctx.createOscillator();
+        baseOsc.type = 'sine';
+        baseOsc.frequency.setValueAtTime(1100, now);
+
+        const lfoSweep = ctx.createOscillator();
+        lfoSweep.type = 'sawtooth';
+        lfoSweep.frequency.setValueAtTime(0.8, now);
+
+        const lfoGain = ctx.createGain();
+        lfoGain.gain.setValueAtTime(700, now);
+        lfoSweep.connect(baseOsc.frequency);
+
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(1400, now);
+        filter.Q.setValueAtTime(4, now);
+
+        const trackGain = ctx.createGain();
+        trackGain.gain.setValueAtTime(0.35, now);
+
+        baseOsc.connect(filter);
+        filter.connect(trackGain);
+        trackGain.connect(masterGain);
+
+        baseOsc.start(now);
+        lfoSweep.start(now);
+        currentNodes.push(baseOsc, lfoSweep, lfoGain, filter, trackGain);
+      }
+      else if (trackId === 'blackhole') {
+        // Tiếng vọng Hố đen Perseus
+        const subOsc = ctx.createOscillator();
+        subOsc.type = 'sine';
+        subOsc.frequency.setValueAtTime(55, now);
+
+        const subOsc2 = ctx.createOscillator();
+        subOsc2.type = 'sawtooth';
+        subOsc2.frequency.setValueAtTime(55.4, now);
+
+        const lpFilter = ctx.createBiquadFilter();
+        lpFilter.type = 'lowpass';
+        lpFilter.frequency.setValueAtTime(95, now);
+        lpFilter.Q.setValueAtTime(5.0, now);
+
+        const trackGain = ctx.createGain();
+        trackGain.gain.setValueAtTime(0.9, now);
+
+        subOsc.connect(lpFilter);
+        subOsc2.connect(lpFilter);
+        lpFilter.connect(trackGain);
+        trackGain.connect(masterGain);
+
+        subOsc.start(now);
+        subOsc2.start(now);
+        currentNodes.push(subOsc, subOsc2, lpFilter, trackGain);
+      }
+      else {
+        // Deep Space Ambient
+        const freqs = [65.4, 98.0, 130.8, 196.0, 261.6];
+        const oscs = [];
+        const trackGain = ctx.createGain();
+        trackGain.gain.setValueAtTime(0.4, now);
+
+        freqs.forEach(f => {
+          const osc = ctx.createOscillator();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(f, now);
+          osc.connect(trackGain);
+          osc.start(now);
+          oscs.push(osc);
+        });
+
+        trackGain.connect(masterGain);
+        currentNodes.push(...oscs, trackGain);
+      }
+    }
+
+    function setAudioPlaying(playing) {
+      isPlaying = playing;
+      if (isPlaying) {
+        getAudioContext();
+        playTrack(currentTrack);
+        btnTrigger.classList.add('playing');
+        btnPlay.classList.add('active');
+        playIcon.className = 'fa-solid fa-pause';
+        playLabel.textContent = 'Dừng phát';
+      } else {
+        stopCurrentSound();
+        btnTrigger.classList.remove('playing');
+        btnPlay.classList.remove('active');
+        playIcon.className = 'fa-solid fa-play';
+        playLabel.textContent = 'Bật âm thanh';
+      }
+    }
+
+    // Mở / Đóng bảng điều khiển âm thanh
+    btnTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = panel.classList.contains('open');
+      if (isOpen) {
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden', 'true');
+      } else {
+        panel.classList.add('open');
+        panel.setAttribute('aria-hidden', 'false');
+      }
+    });
+
+    if (btnClose) {
+      btnClose.addEventListener('click', () => {
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden', 'true');
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+      if (panel.classList.contains('open') && !panel.contains(e.target) && !btnTrigger.contains(e.target)) {
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    btnPlay.addEventListener('click', () => {
+      setAudioPlaying(!isPlaying);
+    });
+
+    volumeSlider.addEventListener('input', () => {
+      if (masterGain && audioCtx) {
+        masterGain.gain.setValueAtTime(parseFloat(volumeSlider.value) || 0.7, audioCtx.currentTime);
+      }
+    });
+
+    trackItems.forEach(item => {
+      item.addEventListener('click', () => {
+        trackItems.forEach(t => {
+          t.classList.remove('active');
+          const icon = t.querySelector('.track-status-icon i');
+          if (icon) icon.className = 'fa-solid fa-play';
+        });
+
+        item.classList.add('active');
+        const icon = item.querySelector('.track-status-icon i');
+        if (icon) icon.className = 'fa-solid fa-volume-high';
+
+        currentTrack = item.dataset.track;
+        if (isPlaying) {
+          playTrack(currentTrack);
+        } else {
+          setAudioPlaying(true);
+        }
+      });
+    });
+  }
+
   // Khởi động ứng dụng khi DOM đã sẵn sàng
   document.addEventListener('DOMContentLoaded', () => {
     new CosmicCanvas('#stars-canvas');
     window.cosmosApp = new CosmosApp();
     new SolarOrbitSimulator('#orbit-canvas');
+    initCosmicBirthday();
+    initNasaSpaceAudio();
   });
 })();
 

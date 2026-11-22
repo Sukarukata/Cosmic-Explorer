@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Khám Phá Vũ Trụ – Cosmic Explorer</title>
-  <meta name="description" content="Trang web khám phá vũ trụ chuẩn Dark Space, Futuristic và Glassmorphism: Hệ Mặt Trời, thiên thể kỳ vĩ, thư viện ảnh thiên văn độ phân giải cao và hỏi đáp khoa học." />
+  <meta name="description" content="Khám Phá Vũ Trụ – Cosmic Explorer: Nền tảng cá nhân phi thương mại khám phá vũ trụ chuẩn Dark Space, Futuristic & Glassmorphism. Hệ Mặt Trời, thiên thể kỳ vĩ, widget pha Mặt Trăng thời gian thực và máy tính không gian." />
   <meta name="theme-color" content="#04060F" />
 
   <!-- ==========================================================================
-       GOOGLE ANALYTICS (GA4) – Đã kết nối mã đo lường chính thức
+       GOOGLE ANALYTICS (GA4) – Giữ nguyên Measurement ID chính thức
        ========================================================================== -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNFSDY03LS"></script>
   <script>
@@ -25,12 +25,15 @@
   <!-- Open Graph / SEO -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Khám Phá Vũ Trụ – Cosmic Explorer" />
-  <meta property="og:description" content="Từ Mặt Trời quen thuộc đến những hố đen xa xôi. Khám phá 8 hành tinh, thiên hà, tinh vân và các bí ẩn vật lý vũ trụ." />
+  <meta property="og:description" content="Từ Mặt Trời quen thuộc đến những hố đen xa xôi. Khám phá 8 hành tinh, thiên hà, tinh vân, widget pha Mặt Trăng thời gian thực và máy tính không gian." />
 
   <!-- Google Fonts: Montserrat & Be Vietnam Pro -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
@@ -59,15 +62,22 @@
           <li><a href="#solar" class="nav-link">Hệ Mặt Trời</a></li>
           <li><a href="#objects" class="nav-link">Thiên thể</a></li>
           <li><a href="#gallery" class="nav-link">Thư viện ảnh</a></li>
+          <li><a href="#birthday" class="nav-link">Ảnh ngày sinh</a></li>
           <li><a href="#faq" class="nav-link">Hỏi – Đáp</a></li>
-          <li><a href="#facts" class="nav-link">Sự thật thú vị</a></li>
+          <li><a href="#facts" class="nav-link">Sự thật</a></li>
         </ul>
       </nav>
 
       <!-- Các nút thao tác góc phải -->
       <div class="nav-actions">
-        <button class="btn-sound" id="btn-sound" aria-label="Bật/Tắt âm thanh không gian" title="Bật/Tắt hiệu ứng âm thanh">
-          🔇
+        <button class="btn-nasa-audio" id="btn-nasa-audio" aria-label="Trạm âm thanh NASA" title="Mở Trạm âm thanh vũ trụ NASA">
+          <i class="fa-solid fa-satellite-dish"></i>
+          <span class="audio-btn-text">Âm thanh NASA</span>
+          <span class="sound-wave-bars" aria-hidden="true">
+            <span class="sw-bar"></span>
+            <span class="sw-bar"></span>
+            <span class="sw-bar"></span>
+          </span>
         </button>
         <button class="btn-burger" id="btn-burger" aria-label="Mở trình đơn chuyển trang" aria-expanded="false">
           <span></span>
@@ -77,6 +87,81 @@
       </div>
     </div>
   </header>
+
+  <!-- Modal / Floating Card: Trạm Âm Thanh Không Gian NASA -->
+  <div class="nasa-audio-panel" id="nasa-audio-panel" role="region" aria-label="Trạm âm thanh không gian NASA" aria-hidden="true">
+    <div class="nap-header">
+      <div class="nap-title-group">
+        <span class="nap-badge"><i class="fa-solid fa-satellite-dish"></i> NASA AUDIO</span>
+        <h4 class="nap-title">Trạm Âm Thanh Không Gian</h4>
+      </div>
+      <button class="nap-close-btn" id="nap-close-btn" aria-label="Đóng bảng âm thanh">✕</button>
+    </div>
+    <p class="nap-desc">
+      Dữ liệu sóng vô tuyến & sóng plasma thực tế do các tàu vũ trụ và robot thăm dò của NASA thu được ngoài không gian.
+    </p>
+
+    <!-- Danh sách các track âm thanh -->
+    <div class="nap-tracks-list" id="nap-tracks-list">
+      <button class="nap-track-item active" data-track="mars">
+        <span class="track-icon">🔴</span>
+        <div class="track-meta">
+          <span class="track-name">Gió trên Sao Hỏa</span>
+          <span class="track-sub">Micro tàu Perseverance • Hố Jezero</span>
+        </div>
+        <span class="track-status-icon"><i class="fa-solid fa-volume-high"></i></span>
+      </button>
+
+      <button class="nap-track-item" data-track="saturn">
+        <span class="track-icon">🪐</span>
+        <div class="track-meta">
+          <span class="track-name">Sóng vô tuyến Sao Thổ</span>
+          <span class="track-sub">Tàu Cassini • Sóng cực quang 1 kHz</span>
+        </div>
+        <span class="track-status-icon"><i class="fa-solid fa-play"></i></span>
+      </button>
+
+      <button class="nap-track-item" data-track="earth">
+        <span class="track-icon">🌍</span>
+        <div class="track-meta">
+          <span class="track-name">Giao hưởng Plasma Trái Đất</span>
+          <span class="track-sub">Vành đai Van Allen • Earth's Chorus</span>
+        </div>
+        <span class="track-status-icon"><i class="fa-solid fa-play"></i></span>
+      </button>
+
+      <button class="nap-track-item" data-track="blackhole">
+        <span class="track-icon">🕳️</span>
+        <div class="track-meta">
+          <span class="track-name">Tiếng vọng Hố Đen Perseus</span>
+          <span class="track-sub">Kính Chandra • Nâng tần số 57 quãng tám</span>
+        </div>
+        <span class="track-status-icon"><i class="fa-solid fa-play"></i></span>
+      </button>
+
+      <button class="nap-track-item" data-track="ambient">
+        <span class="track-icon">🌌</span>
+        <div class="track-meta">
+          <span class="track-name">Deep Space Ambient Chill</span>
+          <span class="track-sub">Nhạc nền du hành không gian thư giãn</span>
+        </div>
+        <span class="track-status-icon"><i class="fa-solid fa-play"></i></span>
+      </button>
+    </div>
+
+    <!-- Thanh điều khiển âm thanh -->
+    <div class="nap-controls">
+      <button class="nap-btn-play" id="nap-btn-play" aria-label="Phát / Dừng âm thanh">
+        <i class="fa-solid fa-play" id="nap-play-icon"></i>
+        <span id="nap-play-label">Bật âm thanh</span>
+      </button>
+      <div class="nap-volume-group">
+        <i class="fa-solid fa-volume-low" style="color: var(--mute); font-size: 12px;"></i>
+        <input type="range" id="nap-volume" min="0" max="1" step="0.05" value="0.7" aria-label="Âm lượng" />
+        <i class="fa-solid fa-volume-high" style="color: var(--cy); font-size: 12px;"></i>
+      </div>
+    </div>
+  </div>
 
   <!-- ==========================================================================
        HERO SECTION (Trang chủ)
@@ -102,9 +187,9 @@
           <span>Bắt đầu hành trình</span>
           <span aria-hidden="true">🚀</span>
         </a>
-        <a href="#gallery" class="btn-secondary">
-          <span>Xem thư viện ảnh</span>
-          <span aria-hidden="true">🔭</span>
+        <a href="#birthday" class="btn-secondary">
+          <span>Ảnh theo ngày sinh</span>
+          <span aria-hidden="true">✨</span>
         </a>
       </div>
 
@@ -131,7 +216,7 @@
 
     <!-- Mũi tên gợi ý cuộn -->
     <a href="#solar" class="hero-scroll-indicator" aria-label="Cuộn xuống nội dung tiếp theo">
-      <span>Cuộn xuống</span>
+      <span>Bắt đầu khám phá</span>
       <span aria-hidden="true">⌄</span>
     </a>
   </section>
@@ -294,6 +379,100 @@
       </div>
     </section>
 
+    <!-- ==========================================================================
+         SECTION: ẢNH THIÊN VĂN THEO NGÀY SINH (COSMIC BIRTHDAY)
+         ========================================================================== -->
+    <section id="birthday" class="birthday-section">
+      <div class="section-header reveal">
+        <span class="section-tag">Kỷ niệm cá nhân hóa</span>
+        <h2 class="section-title">Ảnh Thiên Văn Theo Ngày Sinh</h2>
+        <p class="section-desc">
+          Lấy cảm hứng từ chương trình của NASA – Vào ngày sinh nhật của bạn, các kính thiên văn không gian đã hướng ống kính vào tuyệt tác nào của vũ trụ? Hãy chọn ngày tháng sinh để khám phá bức ảnh dành riêng cho bạn!
+        </p>
+      </div>
+
+      <div class="birthday-card reveal">
+        <!-- Bộ chọn ngày & tháng sinh -->
+        <div class="bday-selector-bar">
+          <div class="bday-input-group">
+            <label for="bday-day"><i class="fa-solid fa-calendar-day"></i> Ngày sinh:</label>
+            <select id="bday-day" class="bday-select" aria-label="Chọn ngày sinh">
+              <option value="1">Ngày 1</option><option value="2">Ngày 2</option><option value="3">Ngày 3</option><option value="4">Ngày 4</option><option value="5">Ngày 5</option>
+              <option value="6">Ngày 6</option><option value="7">Ngày 7</option><option value="8">Ngày 8</option><option value="9">Ngày 9</option><option value="10">Ngày 10</option>
+              <option value="11">Ngày 11</option><option value="12">Ngày 12</option><option value="13">Ngày 13</option><option value="14">Ngày 14</option><option value="15">Ngày 15</option>
+              <option value="16">Ngày 16</option><option value="17">Ngày 17</option><option value="18">Ngày 18</option><option value="19">Ngày 19</option><option value="20">Ngày 20</option>
+              <option value="21">Ngày 21</option><option value="22" selected>Ngày 22</option><option value="23">Ngày 23</option><option value="24">Ngày 24</option><option value="25">Ngày 25</option>
+              <option value="26">Ngày 26</option><option value="27">Ngày 27</option><option value="28">Ngày 28</option><option value="29">Ngày 29</option><option value="30">Ngày 30</option><option value="31">Ngày 31</option>
+            </select>
+          </div>
+
+          <div class="bday-input-group">
+            <label for="bday-month"><i class="fa-solid fa-calendar"></i> Tháng sinh:</label>
+            <select id="bday-month" class="bday-select" aria-label="Chọn tháng sinh">
+              <option value="1">Tháng 1</option>
+              <option value="2">Tháng 2</option>
+              <option value="3">Tháng 3</option>
+              <option value="4">Tháng 4</option>
+              <option value="5">Tháng 5</option>
+              <option value="6">Tháng 6</option>
+              <option value="7">Tháng 7</option>
+              <option value="8">Tháng 8</option>
+              <option value="9">Tháng 9</option>
+              <option value="10">Tháng 10</option>
+              <option value="11" selected>Tháng 11</option>
+              <option value="12">Tháng 12</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Khung hiển thị kết quả bức ảnh thiên văn -->
+        <div class="bday-result-wrapper" id="bday-result-box">
+          <div class="bday-visual-frame">
+            <img src="" alt="Ảnh thiên văn sinh nhật" id="bday-img" class="bday-img" loading="lazy" />
+            <div class="bday-img-glow"></div>
+            <div class="bday-date-badge" id="bday-badge">Ngày 22 tháng 11</div>
+            <button class="bday-fullscreen-btn" id="bday-btn-fullscreen" title="Xem ảnh toàn màn hình" aria-label="Phóng to ảnh">
+              <i class="fa-solid fa-expand"></i>
+            </button>
+          </div>
+
+          <div class="bday-info-body">
+            <div class="bday-tag-row">
+              <span class="card-type-badge" id="bday-type-badge">Kiệt tác James Webb</span>
+              <span class="bday-constellation" id="bday-constellation">Chòm sao Lạp Hộ</span>
+            </div>
+
+            <h3 class="bday-title" id="bday-title">Tinh vân Lạp Hộ (Orion Nebula)</h3>
+            <p class="bday-wish" id="bday-wish">
+              "Vào ngày sinh nhật của bạn, vũ trụ đã tạo nên một vườn ươm sao khổng lồ rực rỡ cách Trái Đất 1.344 năm ánh sáng. Hàng ngàn ngôi sao sơ sinh đang bừng sáng từ những đám mây bụi khí, mang đến nguồn năng lượng tinh khôi và may mắn cho hành trình của bạn."
+            </p>
+
+            <div class="bday-stats-list">
+              <div class="bday-stat-item">
+                <span class="b-lbl"><i class="fa-solid fa-satellite"></i> Kính thiên văn:</span>
+                <span class="b-val" id="bday-telescope">James Webb & Hubble (NASA/ESA)</span>
+              </div>
+              <div class="bday-stat-item">
+                <span class="b-lbl"><i class="fa-solid fa-arrows-left-right"></i> Khoảng cách:</span>
+                <span class="b-val" id="bday-distance">1.344 năm ánh sáng</span>
+              </div>
+            </div>
+
+            <div class="bday-actions">
+              <button class="btn-secondary" id="btn-copy-bday-wish" type="button">
+                <span>Sao chép thông điệp</span>
+                <span aria-hidden="true">📋</span>
+              </button>
+              <button class="btn-primary" id="btn-random-bday" type="button">
+                <span>Khám phá ngày khác</span>
+                <span aria-hidden="true">✨</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SECTION 4: HỎI – ĐÁP VỀ VŨ TRỤ -->
     <section id="faq">
       <div class="section-header reveal">
@@ -353,10 +532,10 @@
         <div class="footer-col">
           <h4>
             <span style="color: var(--cy);">✦</span>
-            <span>Về dự án Cosmic Explorer</span>
+            <span>Về dự án Khám Phá Vũ Trụ – Cosmic Explorer</span>
           </h4>
           <p>
-            Cosmic Explorer là nền tảng số phi thương mại hướng tới việc lan tỏa tình yêu thiên văn học và vật lý vũ trụ tới mọi người. Dự án kết hợp công nghệ web hiện đại với dữ liệu thiên văn chuẩn xác nhằm tạo nên một không gian trực quan sống động, đưa bạn du hành từ Hệ Mặt Trời quen thuộc tới những miền tinh vân và hố đen xa xôi nhất của vũ trụ.
+            Cosmic Explorer là nền tảng số cá nhân phi thương mại hướng tới việc lan tỏa tình yêu thiên văn học và vật lý vũ trụ tới cộng đồng. Dự án kết hợp công nghệ web hiện đại với dữ liệu thiên văn chuẩn xác nhằm tạo nên một không gian trực quan sống động, đưa bạn du hành từ Hệ Mặt Trời quen thuộc tới những miền tinh vân và hố đen xa xôi nhất của vũ trụ.
           </p>
           <p>
             Mọi nội dung, hình ảnh và kiến thức được biên soạn và chọn lọc kỹ lưỡng, phục vụ học tập, nghiên cứu và phát triển tư duy khoa học rộng mở cho thế hệ trẻ.
