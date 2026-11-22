@@ -4081,7 +4081,7 @@ const COSMIC_FACTS = [
 
   // --- Bộ chọn tiện ích ---
   const $ = (selector, parent = document) => parent.querySelector(selector);
-  const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
+  const $ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
 
   /* ==========================================================================
      1. CANVAS VŨ TRỤ: BẦU TRỜI SAO LẤP LÁNH & SAO BĂNG (SHOOTING STARS)
@@ -4485,7 +4485,7 @@ const COSMIC_FACTS = [
         const btn = e.target.closest('.tab-btn');
         if (!btn) return;
         
-        $$('.tab-btn', tabsContainer).forEach(b => {
+        $('.tab-btn', tabsContainer).forEach(b => {
           b.classList.remove('active');
           b.setAttribute('aria-selected', 'false');
         });
@@ -4536,7 +4536,7 @@ const COSMIC_FACTS = [
         grid.style.transform = 'none';
 
         // Gắn sự kiện click mở lightbox
-        $$('.gallery-card', grid).forEach(card => {
+        $('.gallery-card', grid).forEach(card => {
           const open = () => {
             this.lightboxIndex = parseInt(card.dataset.galleryIndex, 10);
             this.openLightbox();
@@ -4854,7 +4854,7 @@ const COSMIC_FACTS = [
 
         // Bẫy tiêu điểm (Focus Trap)
         if (e.key === 'Tab') {
-          const focusable = $$('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])', this.activeModal);
+          const focusable = $('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])', this.activeModal);
           if (focusable.length === 0) return;
           const first = focusable[0];
           const last = focusable[focusable.length - 1];
@@ -4885,7 +4885,7 @@ const COSMIC_FACTS = [
         });
 
         // Đóng menu mobile khi nhấn liên kết
-        $$('.nav-link', menu).forEach(link => {
+        $('.nav-link', menu).forEach(link => {
           link.addEventListener('click', () => {
             menu.classList.remove('open');
             burger.classList.remove('active');
@@ -4940,7 +4940,7 @@ const COSMIC_FACTS = [
 
       // Scroll Spy làm sáng menu tương ứng
       const sections = ['home', 'solar', 'objects', 'gallery', 'birthday', 'faq', 'facts'];
-      const navLinks = $$('.nav-link');
+      const navLinks = $('.nav-link');
 
       const spyObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -4966,7 +4966,7 @@ const COSMIC_FACTS = [
     /* --- Hiệu ứng cuộn Reveal --- */
     initScrollReveal() {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        $$('.reveal').forEach(el => el.classList.add('revealed'));
+        $('.reveal').forEach(el => el.classList.add('revealed'));
         return;
       }
 
@@ -4982,7 +4982,7 @@ const COSMIC_FACTS = [
         threshold: 0.1
       });
 
-      $$('.reveal').forEach(el => revealObserver.observe(el));
+      $('.reveal').forEach(el => revealObserver.observe(el));
     }
   }
 
@@ -5254,7 +5254,7 @@ const COSMIC_FACTS = [
         speedGroup.addEventListener('click', (e) => {
           const btn = e.target.closest('.btn-speed');
           if (!btn) return;
-          $$('.btn-speed', speedGroup).forEach(b => b.classList.remove('active'));
+          $('.btn-speed', speedGroup).forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           this.speedMultiplier = parseFloat(btn.dataset.speed) || 1.0;
         });
